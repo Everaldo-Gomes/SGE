@@ -1,0 +1,45 @@
+body{
+	background-color: rgba(255,255,255,1);
+}
+
+.logo_img img {
+	width: 100px;
+	margin: 30px 0px 0px 200px;
+}
+
+.slogan {
+	font-size: 25px;
+	font-family: Arial;
+	color: white;
+	margin-left: 30%;
+}
+
+.menu {
+	background-color: rgba(20,20,20,1);
+	position: relative;
+	width: 100%;
+	padding: 5px 14px 5px 5px;
+	margin: -10px -9px auto -9px;
+}
+
+.menu ul {
+	margin: 50px 0px 11px 20%;
+	padding-bottom: 10px;
+}
+
+.menu li {
+	font-family: Arial;
+	font-weight: bold;
+	display:inline-block;
+	padding: 10px 60px 10px 60px;
+	margin: 0px 0px 0px 0px;
+	color: rgba(25,25,25,1);
+	background-color: rgba(229,229,229,1);
+	/* border: 1px dashed black; */
+	list-style: none;
+}
+
+.menu li a { 
+	color:rgba(25,25,25,1);
+	text-decoration: none;
+}

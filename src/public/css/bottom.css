@@ -1,0 +1,25 @@
+.footer_container {
+	width: 100%;
+	background-color: rgba(20,20,20,1);
+	padding: 5px 14px 5px 5px;
+	margin: -10px -9px auto -9px;
+}
+
+
+/* .footer_container .contatos { */
+/* 	position: relative; */
+/* 	margin: 10px 0px 0px 100px; */
+/* 	color: white; */
+/* 	font-size: 20px; */
+/* 	font-family: Arial; */
+/* 	display: inline-block; */
+/* } */
+
+
+.footer_container p#rights {
+	margin: 0px 0px 0px 0px;
+	padding: 15px 0px 0px 0px;
+	color: white;
+	text-align: center;
+	font-family: Arial;
+}
