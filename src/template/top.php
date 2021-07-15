@@ -16,7 +16,7 @@
 		<header>
 			<nav class="menu">
 				<div class="logo_img">
-					<img src="./public/img/GEC_logo.svg" alt="logo " id="logo_img_container">
+					<img src="./public/img/SGE_logo.svg" alt="logo " id="logo_img_container">
 				</div>
 				<div class="slogan">
 					<h3 id="slogan">Sem se preocupar, sua encomenda vai chegar</h3>
