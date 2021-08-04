@@ -12,9 +12,6 @@ Sistema gerenciador de encomendas
 ## Feature
 ### Usado para desenvolver uma nova função. Antes deve-se se fazer o pull do master e quando a funcionalidade estiver pronta, deve-se fazer o commit para o dev.<br/><br/>
 
-## Hotfix
-### Usado para consertar algum erro que está no master. Quando pronto, deve-se fazer o commit para o dev e master.<br/><br/>
-
 # Importante 
 ## NÃO é permitido fazer nenhum commit para o master. Caso contrário seu commit DESCARTADO mesmo que a implementação esteja correta.<br/><br/>
 
