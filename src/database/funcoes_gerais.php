@@ -16,7 +16,6 @@ class Funcoes_gerais {
         $values = "'".implode("', '", $dados)."'";
      	$query = "INSERT INTO {$nomeTabela} ( {$fields} ) VALUES ( {$values} ) ";
 
-		echo $query;
 		return $this->conn->query($query);
     }
 	

@@ -37,6 +37,7 @@ body{
 	background-color: rgba(229,229,229,1);
 	/* border: 1px dashed black; */
 	list-style: none;
+	border-radius: 30px;
 }
 
 .menu li a { 

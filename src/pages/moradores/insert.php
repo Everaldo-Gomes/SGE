@@ -9,8 +9,8 @@ $db = $database->getConnection();
 
 /* get info from the front-end */
 $nome = $_POST['nome_field'];
-$telefone = $_POST['telefone_name_field'];
-$endereco = $_POST['endereco_name_field']; 
+$telefone = $_POST['telefone_field'];
+$endereco = $_POST['endereco_field']; 
 
 $arrayDados = array($nome, $telefone, $endereco);
 
