@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 include_once "../../database/conexao.php";
 include_once "../../database/funcoes_gerais.php";
