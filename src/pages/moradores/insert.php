@@ -2,6 +2,7 @@
 
 include_once "../../database/conexao.php";
 include_once "../../database/funcoes_gerais.php";
+include_once "../../routers.php";
 
 /* connecting */
 $database = new Database();
@@ -28,6 +29,12 @@ if ($nome !== " ") {
 	//else { /* set morador's name */
 	$fields = 'nome, telefone, endereco';
 	$morador->gravarArrayNoBanco('morador', $fields, $arrayDados);
+
+	sleep(1.5);
+	
+	/* stay in the same page */
+	header("Location: " . $add_morador);
+	exit();
 	//}
 }
 else {
