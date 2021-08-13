@@ -18,6 +18,10 @@ include("../../routers.php");
 			<input type="text" name="nome_field" size="55" maxlength="30" placeholder="Nome" required
 				   onkeypress="return /[a-z]/i.test(event.key)">
 		</div>
+		<div class="morador_cpf">
+			<input type="text" name="cpf_field" size="55" maxlength="11" placeholder="CPF" required
+				   onkeypress="return /[0-9]/i.test(event.key)">
+		</div>
 		<div class="morador_telefone">
 			<input id="phone_id" type="text" name="telefone_field" size="55" maxlength="13" placeholder="Telefone"
 					   onkeypress="return /[0-9]/i.test(event.key)">

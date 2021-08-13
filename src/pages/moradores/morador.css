@@ -4,7 +4,7 @@ body {
 
 .forms {
 	width: 550px;
-	height: 320px;
+	height: 400px;
 	margin: 4% 50px 0px 30%;
 	padding: 50px;
 	background-color: rgba(20,20,20,1);
@@ -67,7 +67,7 @@ body {
 	
 	0% {
 		opacity: 1;
-		margin: 0% 0px 0px 50%;
+		margin: 0% 0px 0px 53%;
 	}
 	50%  {
 		opacity: 1;

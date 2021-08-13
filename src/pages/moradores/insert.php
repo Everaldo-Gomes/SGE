@@ -10,12 +10,13 @@ $db = $database->getConnection();
 
 /* get info from the front-end */
 $nome = $_POST['nome_field'];
+$cpf = $_POST['cpf_field'];
 $telefone = $_POST['telefone_field'];
 $endereco = $_POST['endereco_field']; 
 
-$arrayDados = array($nome, $telefone, $endereco);
+$arrayDados = array($nome, $cpf, $telefone, $endereco);
 
-if ($nome !== " ") {
+if ($nome !== " " && $cpf !== " ") {
 	
 	$morador = new Funcoes_gerais($db);
 
@@ -27,7 +28,7 @@ if ($nome !== " ") {
 	/* warning morador already exist */
 	//}
 	//else { /* set morador's name */
-	$fields = 'nome, telefone, endereco';
+	$fields = 'nome, cpf, telefone, endereco';
 	$morador->gravarArrayNoBanco('morador', $fields, $arrayDados);
 
 	sleep(1.5);
