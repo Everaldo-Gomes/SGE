@@ -1,7 +1,7 @@
 <?php
 $title = 'SGC - Morador';
-include("../../template/top.php");
-include("../../routers.php");
+include("../../../template/top.php");
+include("../../../routers.php");
 ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -38,4 +38,4 @@ include("../../routers.php");
 </div>
 
 <script src="./morador.js"></script>
-<?php include("../../template/bottom.php"); ?>
+<?php include("../../../template/bottom.php"); ?>

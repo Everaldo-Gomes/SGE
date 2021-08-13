@@ -1,0 +1,80 @@
+body {
+	//background-color: rgba(0, 0, 0, 0.1);
+}
+
+.forms {
+	width: 550px;
+	height: 400px;
+	margin: 4% 50px 0px 30%;
+	padding: 50px;
+	background-color: rgba(20,20,20,1);
+	border-radius: 30px;
+}
+
+.forms input[type="text"] {
+	margin: 10px 0px 0px 10px;
+	padding: 10px 0px;
+	line-height: 17px;
+	font-size: 15px;
+	border-radius: 30px;
+	text-align: center;
+}
+
+.forms input[type="text"]::placeholder {
+	text-align: center;
+}
+
+.forms input[type="submit"] {
+	position: relative;
+	overflow: hidden;
+	font-family: Arial;
+	font-size: 15px;
+	font-weight: bold;
+	margin: 10% 0px 0px 26%;
+	padding: 15px 40px;
+	border-radius: 20px;
+}
+
+.add_morador {
+	width: 200px;
+	height: 40px;
+}
+
+.hidden {
+	width: 200px;
+	height: 40px;
+	position: relative;
+	background-color: blue;
+	font-family: Arial;
+	font-size: 15px;
+	font-weight: bold;
+	color: white;
+	margin: 0% 0px 0px 55%;
+	padding-top: 10px;
+	display: inline-block;
+	border-radius: 10px;
+	text-align: center;
+	animation-name: add_morador_efeito;
+	animation-duration: 4s;
+	opacity: 0;
+}
+
+.added {
+	opacity: 0;
+}
+
+@keyframes add_morador_efeito {
+	
+	0% {
+		opacity: 1;
+		margin: 0% 0px 0px 53%;
+	}
+	50%  {
+		opacity: 1;
+		margin: 0% 0px 0px 55%;
+	}
+	100%  {
+		opacity: 0;
+		margin: 0% 0px 0px 55%;
+	}
+}

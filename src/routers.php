@@ -6,7 +6,7 @@ $bootstrap_js_path = "/SGE/src/public/bootstrap/js/bootstrap.min.js";
 
 
 /* pages  */
-$add_morador = "/SGE/src/pages/moradores/morador.php";
+$add_morador = "/SGE/src/pages/moradores/inserir/morador.php";
 
 
 
