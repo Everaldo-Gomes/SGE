@@ -55,7 +55,7 @@ body {
 	border-radius: 10px;
 	text-align: center;
 	animation-name: add_morador_efeito;
-	animation-duration: 4s;
+	animation-duration: 5s;
 	opacity: 0;
 }
 

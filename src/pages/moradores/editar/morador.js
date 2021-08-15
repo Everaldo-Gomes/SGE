@@ -2,7 +2,7 @@
 
 // quando abrir essa tela os campos vão está configurado da seguinte forma:
 
-// div formms
+// div forms
 document.querySelector('.forms').style.height = "270px";
 
 // campos
@@ -14,14 +14,50 @@ document.querySelector('.morador_endereco').style.display = "none";
 document.querySelector('.exclui_morador').style.visibility = 'hidden';
 document.querySelector('.edita_morador').style.visibility = 'hidden';
 
-function confirm_submit() {
-	confirm("Tem certeza ?");
+//aux
+var hidden_name = document.getElementById('aux_nome').value;
+var hidden_cpf = document.getElementById('aux_cpf').value;
+var hidden_phone = document.getElementById('aux_phone').value;
+var hidden_endereco = document.getElementById('aux_endereco').value;
 
-	var nome = document.forms["Form"]["nome_field"].value;
+/* se encontrar o cpf, mostra e organiza os outros campos */
+if (hidden_cpf > 0) {
+
+	// div forms
+	document.querySelector('.forms').style.height = "500px";
+
+	// campos
+	document.querySelector('.morador_nome').style.display = "block";
+	document.querySelector('.morador_telefone').style.display = "block";
+	document.querySelector('.morador_endereco').style.display = "block";
+
+	// botões
+	var exclui_btn = document.querySelector('.exclui_morador');
+	var edita_btn = document.querySelector('.edita_morador');
+
+	edita_btn.style.visibility = 'visible';
+	edita_btn.style.display = "inline";
+	edita_btn.style.marginLeft = "20px";
 	
-	if (nome !== "") {
-		setTimeout(() => {
-			document.querySelector('.add_morador').classList.add("hidden");
-		}, 1);
-	}
+	exclui_btn.style.visibility = 'visible';
+	exclui_btn.style.display = "inline";
+	exclui_btn.style.marginLeft = "15px";
+
+	/* preenche campos */
+	document.getElementById("nome_id").value = hidden_name;
+	document.getElementById("cpf_id").value = hidden_cpf;
+	document.getElementById("phone_id").value = hidden_phone;
+	document.getElementById("endereco_id").value = hidden_endereco;
 }
+
+// function confirm_submit() {
+// 	confirm("Tem certeza ?");
+
+// 	var nome = document.forms["Form"]["nome_field"].value;
+	
+// 	if (nome !== "") {
+// 		setTimeout(() => {
+// 			document.querySelector('.add_morador').classList.add("hidden");
+// 		}, 1);
+// 	}
+// }

@@ -8,38 +8,34 @@ include_once "../../../routers.php";
 $database = new Database();
 $db = $database->getConnection();
 
-/* get info from the front-end */
+/* informações vinda do front-end */
 $nome = $_POST['nome_field'];
 $cpf = $_POST['cpf_field'];
 $telefone = $_POST['telefone_field'];
 $endereco = $_POST['endereco_field']; 
-
 $arrayDados = array($nome, $cpf, $telefone, $endereco);
 
-if ($nome !== " " && $cpf !== " ") {
-	
+if ($nome !== " " || $cpf !== " ") {
+
 	$morador = new Funcoes_gerais($db);
+	$parametros = "WHERE cpf = '{$cpf}'";
+	$arrayResultado = $morador->lerRegistros('morador', $parametros, '*');
 
-	/* verify if the name is already been taken */
-	//$exist = 0 //NEED TO CHANGE
-
-	//if ($exist) {
+	/* se cpf não tiver cadastrado, cadastra o novo morador */
+	if ($arrayResultado[2] != $cpf) {
 	
-	/* warning morador already exist */
-	//}
-	//else { /* set morador's name */
-	$fields = 'nome, cpf, telefone, endereco';
-	$morador->gravarArrayNoBanco('morador', $fields, $arrayDados);
+		$fields = 'nome, cpf, telefone, endereco';
+		$morador->gravarArrayNoBanco('morador', $fields, $arrayDados);
 
-	sleep(1.5);
-	
-	/* stay in the same page */
-	header("Location: " . $cadastrar_morador_path);
-	exit();
-	//}
+		sleep(1.8);
+		
+		/* redireciona para  a mesma pagina */
+		header("Location: " . $cadastrar_morador_path);
+		exit();
+	}
+	else {
+		/* Falta colocar esse aviso no front */
+		echo 'já cadastrado';
+	}
 }
-else {
-	/* show   an error */
-}
-
 ?>

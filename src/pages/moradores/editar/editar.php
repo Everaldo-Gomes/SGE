@@ -18,58 +18,34 @@ $telefone = $_POST['telefone_field'];
 $endereco = $_POST['endereco_field'];
 $arrayDados = array($nome, $cpf, $telefone, $endereco);
 
-$cpf = 1; /* APAGAR QUANDO O ESTIVER PRONTO */
 
 /* conferiindo se o cpf existe */
 $parametros = "WHERE cpf = '{$cpf}'";
 $arrayResultado = $morador->lerRegistros('morador', $parametros, '*');
 
-/* 2 é a coluna do cpf
-   se achar o cpf, carrega as informações daquele morador nos formulários */
 
-if ($arrayResultado[2] != '') {
+/* se cpf não tiver cadastrado, cadastra o novo morador */
+if ($arrayResultado[2] == $cpf) {
+
+	/* salva info para poder liberar e preencher os outros campos */
+	session_start();
+	$_SESSION['field_info'] = $arrayResultado;
 	
+	/* pega as info */
+
+	/* conferi o cpf */
 	
+	/* salva */
+	//$fields = 'nome, cpf, telefone, endereco';
+	//$morador->gravarArrayNoBanco('morador', $fields, $arrayDados);
+
+	/* redireciona para  a mesma pagina */
+	header("Location: " . $editar_morador_path);
+	exit();
 }
 else {
-	/* mostrar aviso que não achou o morador */
+	/* Falta colocar aviso de erro no front */
+	header("Location: " . $editar_morador_path);
+	exit();
 }
 ?>
-
-<script type="text/javascript">var a = "<?= $arrayResultado ?>";</script>
-<script src="./morador.js"></script>
-
-<!-- if ($nome !== " " && $cpf !== " ") {
-	 
-	 /* verify if the name is already been taken */
-	 //$exist = 0 //NEED TO CHANGE
-
-	 //if ($exist) {
-	 
-	 /* warning morador already exist */
-	 //}
-	 //else { /* set morador's name */
-	 $fields = 'nome, cpf, telefone, endereco';
-	 $morador->gravarArrayNoBanco('morador', $fields, $arrayDados);
-
-	 sleep(1.5);
-	 
-	 /* stay in the same page */
-	 header("Location: " . $add_morador);
-	 exit();
-	 //}
-	 }
-	 else {
-	 /* show   an error */
-	 } -->
-
-
-<!-- <script type="text/javascript">
-
-	 var jArray = <?php echo json_encode($phpArray); ?>;
-
-	 for(var i=0; i<jArray.length; i++){
-     alert(jArray[i]);
-	 }
-	 </script>
-	 <script src="./morador.js"></script> -->

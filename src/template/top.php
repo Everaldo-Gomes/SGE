@@ -34,7 +34,7 @@
 						<button class="dropbtn">Moradores</button>
 						<div class="dropdown_content">
 							<a href="<?php echo $cadastrar_morador_path; ?>">Cadastrar</a>
-							<a href="<?php echo $editar_morador_path; ?>">Editar</a>
+							<a href="<?php echo $editar_morador_path; ?>">Editar / Excluir</a>
 							<a href="<?php echo $listar_morador_path; ?>">Listar</a>
 						</div>
 					</div>
@@ -42,9 +42,12 @@
 						<button class="dropbtn">Encomendas</button>
 						<div class="dropdown_content">
 							<a href="<?php echo $cadastrar_encomenda_path; ?>">Cadastrar</a>
-							<a href="<?php echo $editar_encomenda_path; ?>">Editar</a>
+							<a href="<?php echo $editar_encomenda_path; ?>">Editar / Excluir</a>
 							<a href="<?php echo $acompanhar_encomenda_path; ?>">Acompanhar</a>
 							<a href="<?php echo $acompanhar_encomenda_path; ?>">Histórico</a>
+							<a href="<?php echo $recebedore_path; ?>">Recebedores</a>
+							<a href="<?php echo $cadastrar_recebedor_path; ?>">Cadastrar Recebedor</a>
+							<a href="<?php echo $editar_recebedor_path; ?>">Editar / Excluir Recebedor</a>
 						</div>
 					</div>
 					<div class="dropdown">

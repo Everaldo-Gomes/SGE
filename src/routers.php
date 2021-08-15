@@ -11,9 +11,15 @@ $template_top_path = "/SGE/src/public/css/top.css";
 $template_bottom_path = "/SGE/src/public/css/bottom.css";
 
 
-/* pages  */
+/* paginas  */
 $index_path = "/SGE/src/index.php";
 $cadastrar_morador_path = "/SGE/src/pages/moradores/inserir/morador.php";
+$editar_morador_path = "/SGE/src/pages/moradores/editar/morador.php";
+$acompanhar_encomenda_path = "";
+$historico_encomenda_path = "";
+$recebedore_path = "";
+$cadastrar_recebedor_path = "";
+$editar_recebedor_path = "";
 
 
 /* imagens */
