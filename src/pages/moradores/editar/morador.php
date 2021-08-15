@@ -31,14 +31,13 @@ include("../../../template/top.php");
 				   onkeypress="return /[a-z]/i.test(event.key)">
 		</div>
 		<div class="links_btn">
-			<input class="pesquisa_morador btn btn-primary" type="submit" value="Pesquisar Morador">
-			<input class="edita_morador btn btn-warning" type="submit" value="Editar morador" onclick="">
-			<input class="exclui_morador btn btn-danger" type="submit" value="Excluir morador" onclick="">
+			<input class="pesquisa_morador btn btn-primary" type="submit" value="Pesquisar Morador" name="btn_pesquisa_cpf">
+			<input class="edita_morador btn btn-warning" type="submit" value="Editar morador" name="btn_edita_morador">
+			<input class="exclui_morador btn btn-danger" type="submit" value="Excluir morador" name="btn_exclui_morador">
 		</div>
 	</form>
 </div>
 
-<!-- aux -->
 <input id="aux_nome"     type='text' name='aux_field' readonly value="<?php session_start(); echo $_SESSION['field_info'][1];?>">
 <input id="aux_cpf"      type='text' name='aux_field' readonly value="<?php echo $_SESSION['field_info'][2];?>">
 <input id="aux_phone"    type='text' name='aux_field' readonly value="<?php echo $_SESSION['field_info'][3];?>">

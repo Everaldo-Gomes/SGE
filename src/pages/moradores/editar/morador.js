@@ -28,6 +28,7 @@ if (hidden_cpf > 0) {
 
 	// campos
 	document.querySelector('.morador_nome').style.display = "block";
+	//document.getElementById("cpf_id").readOnly = true;
 	document.querySelector('.morador_telefone').style.display = "block";
 	document.querySelector('.morador_endereco').style.display = "block";
 
@@ -49,15 +50,3 @@ if (hidden_cpf > 0) {
 	document.getElementById("phone_id").value = hidden_phone;
 	document.getElementById("endereco_id").value = hidden_endereco;
 }
-
-// function confirm_submit() {
-// 	confirm("Tem certeza ?");
-
-// 	var nome = document.forms["Form"]["nome_field"].value;
-	
-// 	if (nome !== "") {
-// 		setTimeout(() => {
-// 			document.querySelector('.add_morador').classList.add("hidden");
-// 		}, 1);
-// 	}
-// }

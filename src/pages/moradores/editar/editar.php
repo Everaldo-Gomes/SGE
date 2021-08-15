@@ -18,34 +18,77 @@ $telefone = $_POST['telefone_field'];
 $endereco = $_POST['endereco_field'];
 $arrayDados = array($nome, $cpf, $telefone, $endereco);
 
-
-/* conferiindo se o cpf existe */
+/* arrayResultado tem todas as info o usuario */
 $parametros = "WHERE cpf = '{$cpf}'";
 $arrayResultado = $morador->lerRegistros('morador', $parametros, '*');
 
 
-/* se cpf não tiver cadastrado, cadastra o novo morador */
-if ($arrayResultado[2] == $cpf) {
+/* verifica qual foi botão foi pressionado  */
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['btn_pesquisa_cpf'])) {
 
-	/* salva info para poder liberar e preencher os outros campos */
-	session_start();
-	$_SESSION['field_info'] = $arrayResultado;
-	
-	/* pega as info */
+		/* se cpf não tiver cadastrado, cadastra o novo morador */
+		if ($arrayResultado[2] == $cpf) {
 
-	/* conferi o cpf */
-	
-	/* salva */
-	//$fields = 'nome, cpf, telefone, endereco';
-	//$morador->gravarArrayNoBanco('morador', $fields, $arrayDados);
+			/* salva info para poder liberar e preencher os outros campos */
+			session_start();
+			$_SESSION['field_info'] = $arrayResultado;
+			
+			/* redireciona para  a mesma pagina */
+			header("Location: " . $editar_morador_path);
+			exit();
+		}
+		else {
+			/* Falta colocar aviso de erro no front */
+			header("Location: " . $editar_morador_path);
+			exit();
+		}
+    }
+	else if (isset($_POST['btn_edita_morador'])) { 
 
-	/* redireciona para  a mesma pagina */
-	header("Location: " . $editar_morador_path);
-	exit();
+		if ($nome !== " " || $cpf !== " ") {
+			
+			/* se cpf não tiver cadastrado, cadastra o novo morador */
+			//if ($arrayResultado[2] != $cpf) {
+
+			$dados = array($nome, $cpf, $telefone, $endereco);
+			$fields = array ('nome', 'cpf', 'telefone', 'endereco');
+			$where = "id = {$arrayResultado[0]}";
+			$morador->alterarRegistro('morador', $fields, $dados, $where);
+
+			sleep(1);
+			
+			/* redireciona para  a mesma pagina */
+			//header("Location: " . $editar_morador_path);
+			//exit();
+			//}
+			//else {
+			/* Falta colocar esse aviso no front */
+			//	echo 'já cadastrado';
+			//}
+		}
+		
+		/* redireciona para  a mesma pagina */
+		header("Location: " . $editar_morador_path);
+		exit();
+		
+    }
+	else { //btn_exclui_morador foi pressionado
+		
+		$where = "id = {$arrayResultado[0]}";
+		$morador->deletarRegistro('morador', $where);
+
+		sleep(1);
+		
+		/* redireciona para  a mesma pagina */
+		header("Location: " . $editar_morador_path);
+		exit();
+	}
 }
-else {
-	/* Falta colocar aviso de erro no front */
-	header("Location: " . $editar_morador_path);
-	exit();
-}
+
+
+
+
+
+
 ?>
