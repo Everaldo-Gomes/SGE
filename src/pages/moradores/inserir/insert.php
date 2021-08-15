@@ -34,7 +34,7 @@ if ($nome !== " " && $cpf !== " ") {
 	sleep(1.5);
 	
 	/* stay in the same page */
-	header("Location: " . $add_morador);
+	header("Location: " . $cadastrar_morador_path);
 	exit();
 	//}
 }

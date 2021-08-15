@@ -1,12 +1,12 @@
 <?php
 $title = 'SGC - Morador';
-include("../../../template/top.php");
 include("../../../routers.php");
+include("../../../template/top.php");
 ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet" href="./morador.css">
 <link rel="stylesheet" href="<?php echo $bootstrap_css_path ?>">
+<link rel="stylesheet" href="./morador.css">
 
 <div class="add_morador added">
 	<p>Morador Adicionado !</p>
