@@ -13,7 +13,7 @@ include("../../../template/top.php");
 </div>
 
 <div class="forms">
-	<form action="<?php echo "insert.php"?>" method="POST" name="Form">	
+	<form action="insert.php" method="POST" name="Form">	
 		<div class="morador_nome">
 			<input type="text" name="nome_field" size="55" maxlength="30" placeholder="Nome" required
 				   onkeypress="return /[a-z]/i.test(event.key)">
@@ -29,6 +29,10 @@ include("../../../template/top.php");
 		<div class="morador_endereco">
 			<input type="text" name="endereco_field" size="55" maxlength="30" placeholder="Endereço"
 				   onkeypress="return /[a-z]/i.test(event.key)">
+		</div>
+		<div>
+			<input type="checkbox" id="recebe_encomenda_id" name="recebe_encomenda_nome">
+			<label for="recebe_encomenda">Recebe Encomenda ?</label>
 		</div>
 		<div class="links_btn">
 			<input class="btn btn-primary" type="submit" value="Adicionar morador" onclick="confirm_submit()">

@@ -14,14 +14,14 @@ class Funcoes_gerais {
 
         $values = "'".implode("', '", $dados)."'";
      	$query = "INSERT INTO {$nomeTabela} ( {$fields} ) VALUES ( {$values} ) ";
-
+		echo $query;
 		return $this->conn->query($query);
     }
 
 	// ler registros e retorna os dados daquele que for encontrado
     public function lerRegistros($nomeTabela, $parametros = null, $fields = '*') {
 		
-        $query = "SELECT {$fields} FROM {$nomeTabela} {$parametros} ";
+        $query = "SELECT {$fields} FROM {$nomeTabela} {$parametros} AND excluido = 0";
         $result = $this->conn->query($query);
 		$data = array();
 		
@@ -47,12 +47,11 @@ class Funcoes_gerais {
 		return $this->conn->query($query);
 	}
 
-	// deletar registros
+	// deletar registros. não vai deletar, apenas marcar que não pode ser exibido / procurado
 	public function deletarRegistro($nomeTabela, $where = null) {
 		
 		$where = ($where) ? " WHERE {$where}" : null;
-		$query = "DELETE FROM {$nomeTabela} {$where} ";
-		echo $query;
+		$query = "UPDATE {$nomeTabela} SET excluido = 1 {$where}";
 		return $this->conn->query($query);
 	}
 }
@@ -118,5 +117,9 @@ class Funcoes_gerais {
    }
 
 
+   //DELETa registro
+   /* $where = ($where) ? " WHERE {$where}" : null;
+   $query = "DELETE FROM {$nomeTabela} {$where} ";
+   echo $query;
  */
 ?>

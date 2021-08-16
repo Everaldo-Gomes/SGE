@@ -30,6 +30,10 @@ include("../../../template/top.php");
 			<input id="endereco_id" type="text" name="endereco_field" size="55" maxlength="30" placeholder="Endereço"
 				   onkeypress="return /[a-z]/i.test(event.key)">
 		</div>
+		<div class="morador_recebe_encomenda">
+			<input type="checkbox" id="recebe_encomenda_id" name="recebe_encomenda_nome">
+			<label for="recebe_encomenda">Recebe Encomenda ?</label>
+		</div>
 		<div class="links_btn">
 			<input class="pesquisa_morador btn btn-primary" type="submit" value="Pesquisar Morador" name="btn_pesquisa_cpf">
 			<input class="edita_morador btn btn-warning" type="submit" value="Editar morador" name="btn_edita_morador">
@@ -42,5 +46,6 @@ include("../../../template/top.php");
 <input id="aux_cpf"      type='text' name='aux_field' readonly value="<?php echo $_SESSION['field_info'][2];?>">
 <input id="aux_phone"    type='text' name='aux_field' readonly value="<?php echo $_SESSION['field_info'][3];?>">
 <input id="aux_endereco" type='text' name='aux_field' readonly value="<?php echo $_SESSION['field_info'][4];?>">
+<input id="aux_recebe"   type='text' name='aux_field' readonly value="<?php echo $_SESSION['field_info'][5];?>">
 <?php include("../../../template/bottom.php"); unset($_SESSION['field_info']); ?>
 <script src="./morador.js"></script>
