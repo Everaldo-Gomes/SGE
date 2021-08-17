@@ -1,0 +1,15 @@
+<?php 
+
+include_once "../../database/conexao.php";
+include_once "../../database/funcoes_gerais.php";
+include_once "../../routers.php";
+
+/* connecting */
+$database = new Database();
+$db = $database->getConnection();
+
+$funcoesBanco = new Funcoes_gerais($db);
+
+$moradores = $funcoesBanco-> lerRegistros('morador');
+
+?>
