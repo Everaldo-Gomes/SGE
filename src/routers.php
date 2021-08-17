@@ -1,13 +1,29 @@
 <?php
 
+
 /* CSS */
 $bootstrap_css_path = "/SGE/src/public/bootstrap/css/bootstrap.min.css";
 $bootstrap_js_path = "/SGE/src/public/bootstrap/js/bootstrap.min.js";
 
 
-/* pages  */
-$add_morador = "/SGE/src/pages/moradores/morador.php";
+/* templates */
+$template_top_path = "/SGE/src/public/css/top.css";
+$template_bottom_path = "/SGE/src/public/css/bottom.css";
 
+
+/* paginas  */
+$index_path = "/SGE/src/index.php";
+$cadastrar_morador_path = "/SGE/src/pages/moradores/inserir/morador.php";
+$editar_morador_path = "/SGE/src/pages/moradores/editar/morador.php";
+$acompanhar_encomenda_path = "";
+$historico_encomenda_path = "";
+$recebedore_path = "";
+$cadastrar_recebedor_path = "";
+$editar_recebedor_path = "";
+
+
+/* imagens */
+$logo_img_path = "/SGE/src/public/img/SGE_logo.svg";
 
 
 ?>

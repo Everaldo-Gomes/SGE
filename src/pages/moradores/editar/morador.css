@@ -2,10 +2,14 @@ body {
 	//background-color: rgba(0, 0, 0, 0.1);
 }
 
+#aux_field, #aux_nome, #aux_cpf, #aux_phone, #aux_endereco, #aux_recebe {
+	display: none;
+}
+
 .forms {
 	width: 550px;
-	height: 320px;
-	margin: 4% 50px 0px 30%;
+	height: 420px;
+	margin: 4% 50px 0px 33%;
 	padding: 50px;
 	background-color: rgba(20,20,20,1);
 	border-radius: 30px;
@@ -24,6 +28,19 @@ body {
 	text-align: center;
 }
 
+.forms input[type="checkbox"] {
+	margin: 22px 0px 0px 20px;
+	transform: scale(1.5);
+}
+
+label {
+	color: white;
+	font-family: Arial;
+	font-size: 15px;
+	font-weight: bold;
+	margin: 10px 0px 0px 10px;
+}
+
 .forms input[type="submit"] {
 	position: relative;
 	overflow: hidden;
@@ -35,7 +52,7 @@ body {
 	border-radius: 20px;
 }
 
-.add_morador {
+.editar_morador {
 	width: 200px;
 	height: 40px;
 }
@@ -54,20 +71,20 @@ body {
 	display: inline-block;
 	border-radius: 10px;
 	text-align: center;
-	animation-name: add_morador_efeito;
+	animation-name: aditar_morador_efeito;
 	animation-duration: 4s;
 	opacity: 0;
 }
 
-.added {
+.edited {
 	opacity: 0;
 }
 
-@keyframes add_morador_efeito {
+@keyframes aditar_morador_efeito {
 	
 	0% {
 		opacity: 1;
-		margin: 0% 0px 0px 50%;
+		margin: 0% 0px 0px 53%;
 	}
 	50%  {
 		opacity: 1;
@@ -78,3 +95,5 @@ body {
 		margin: 0% 0px 0px 55%;
 	}
 }
+
+

@@ -12,81 +12,48 @@ class Funcoes_gerais {
     // os nomes dos campos dos arrays tem que ser os mesmos dos campos da tabela sem passar pela remoção de sql injection
     public function gravarArrayNoBanco($nomeTabela, $fields, array $dados) {
 
-        //$fields = implode(",", array_keys($dados)); //não funciona porque retorna 0,1,2... e não os nomes
         $values = "'".implode("', '", $dados)."'";
      	$query = "INSERT INTO {$nomeTabela} ( {$fields} ) VALUES ( {$values} ) ";
-
+		echo $query;
 		return $this->conn->query($query);
     }
-	
-    //ler registros
-    public function lerRegistros($nomeTabela, $parametros = null, $fields = '*'){
-        $query = "SELECT {$fields} FROM {$nomeTabela} {$parametros}";
+
+	// ler registros e retorna os dados daquele que for encontrado
+    public function lerRegistros($nomeTabela, $parametros = null, $fields = '*') {
+		
+        $query = "SELECT {$fields} FROM {$nomeTabela} {$parametros} AND excluido = 0";
         $result = $this->conn->query($query);
+		$data = array();
+		
+        if($result->rowCount() == 0) {
+			return false;
+		}
+		else {
+			foreach($result as $res) {
+				array_merge($data, $res);
+				$data = &$res;
+			}
+		}
+		return $data;
+	}
 
-        return $result;
-    }
+	// alterar registro
+	public function alterarRegistro($nomeTabela, array $fields, array $dados, $where = null) {
 
-    //executa query (retorna true se a query for executada) e se colocar true retorna i id gerado
-    public function executarQuery($query, $insertId = false) {
-        
-        //$conexao = conectar();
-        $result = $this->conn->query($query);
-        return $result;
-    }
+		$values = "'".implode("', '", $dados)."'";
+		$where = ($where) ? " WHERE {$where}" : null;
+		$query = "UPDATE {$nomeTabela} SET {$fields[0]} = '{$dados[0]}', {$fields[1]} = '{$dados[1]}', 
+                                           {$fields[2]} = '{$dados[2]}', {$fields[3]} = '{$dados[3]}' {$where}";
+		return $this->conn->query($query);
+	}
 
-	/* ==================================================== */
-	/* daqui pra baixo ainda não foram usadas e verificadas */
-	/* ==================================================== */
-
-	//fecha a conexao
-    // public function fechaConexao($conexao){
-    //     mysqli_close($conexao) or die(mysqli_error($conexao));
-    // }
-	
-
-
-    //até onde eu pesquisei mais a fundo, tem uma função no proprio mysqli que limpa a query
-    //fica =/- assim:
-    //$stringParametro1 = "x...";
-    //$stringParametro2 = "xx...";
-    //$queryPreparada = $conn->prepare("INSERT INTO xxx(xxx, xxx) VALUES (?, ?)");
-    //$queryPreparada = $conn->bind_param(ss, stringParametro1, stringParametro2)
-    //queryPreparada->execute();
-    //mas não testei
-    //
-    //limpa de sql injection pra strings
-    // public function limpaSql($dados){
-    //     $link = conectar();
-    //     if(!is_array($dados)){
-    //         $dados = mysqli_real_escape_string($link, $dados);
-    //     }else{
-    //         $array = $dados;
-    //         foreach($array as $key => $value){
-    //             $key = mysqli_real_escape_string($link, $key);
-    //             $value = mysqli_real_escape_string($link, $value);
-    //             $dados[$key] = $value;
-    //         }
-    //     }
-    //     fechaConexao($link);
-    // }
-
-
-
-
-
-    //alterar registro
-    // public function alterarRegistro($nomeTabela, array $dados, $where = null){
-    //     foreach($dados as $key => $value){
-    //         $fields[] = "{$key} = '{$value}' ";
-    //     }
-    //     $fields = implode(", ", $fields);
-    //     $where = ($where) ? " WHERE {$where}" : null;
-
-    //     $query = "UPDATE {$nomeTabela} SET {$fields} {$where}";
-    //     return executarQuery($query);
-    // }
-
+	// deletar registros. não vai deletar, apenas marcar que não pode ser exibido / procurado
+	public function deletarRegistro($nomeTabela, $where = null) {
+		
+		$where = ($where) ? " WHERE {$where}" : null;
+		$query = "UPDATE {$nomeTabela} SET excluido = 1 {$where}";
+		return $this->conn->query($query);
+	}
 }
 
 /* abre a conexao com o banco de dados
@@ -94,5 +61,65 @@ class Funcoes_gerais {
  *     $conexao = mysqli_connect(DB_HOST, BD_USUARIO, DB_SENHA, DB_DATABASE) or die(mysqli_connect_error());
  *     mysqli_set_charset($conexao, DB_CHARSET) or die(mysqli_error($conexao));
  *     return $conexao;
- * } */
+ * } 
+
+   //$fields = implode(",", array_keys($dados)); //não funciona porque retorna 0,1,2... e não os nomes
+
+
+   //fecha a conexao
+   public function fechaConexao($conexao){
+   mysqli_close($conexao) or die(mysqli_error($conexao));
+   }
+   
+   //limpa de sql injection pra strings
+   public function limpaSql($dados){
+   $link = conectar();
+   if(!is_array($dados)){
+   $dados = mysqli_real_escape_string($link, $dados);
+   }else{
+   $array = $dados;
+   foreach($array as $key => $value){
+   $key = mysqli_real_escape_string($link, $key);
+   $value = mysqli_real_escape_string($link, $value);
+   $dados[$key] = $value;
+   }
+   }
+   fechaConexao($link);
+   }
+
+
+   //executa query (retorna true se a query for executada) e se colocar true retorna i id gerado
+   public function executarQuery($query, $insertId = false) {
+   
+   //$conexao = conectar();
+   $result = mysqli_query($conexao, $query) or die(mysqli_error($conexao));
+
+   if($insertId) {
+   $result = mysqli_insert_id($conexao);
+   }
+   
+   //fechaConexao($conexao);
+   return $result;
+   }
+
+
+
+   //alterar registro
+   public function alterarRegistro($nomeTabela, array $dados, $where = null){
+   foreach($dados as $key => $value){
+   $fields[] = "{$key} = '{$value}' ";
+   }
+   $fields = implode(", ", $fields);
+   $where = ($where) ? " WHERE {$where}" : null;
+
+   $query = "UPDATE {$nomeTabela} SET {$fields} {$where}";
+   return executarQuery($query);
+   }
+
+
+   //DELETa registro
+   /* $where = ($where) ? " WHERE {$where}" : null;
+   $query = "DELETE FROM {$nomeTabela} {$where} ";
+   echo $query;
+ */
 ?>

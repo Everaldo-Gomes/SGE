@@ -8,6 +8,6 @@ function confirm_submit() {
 	if (nome !== "") {
 		setTimeout(() => {
 			document.querySelector('.add_morador').classList.add("hidden");
-		}, 1);
+		}, 1000);
 	}
 }
