@@ -44,10 +44,10 @@
 							<a href="<?php echo $cadastrar_encomenda_path; ?>">Cadastrar</a>
 							<a href="<?php echo $editar_encomenda_path; ?>">Editar / Excluir</a>
 							<a href="<?php echo $acompanhar_encomenda_path; ?>">Acompanhar</a>
-							<a href="<?php echo $acompanhar_encomenda_path; ?>">Histórico</a>
+							<a href="<?php echo $historico_encomenda_path; ?>">Histórico</a>
 							<a href="<?php echo $recebedore_path; ?>">Recebedores</a>
-							<a href="<?php echo $cadastrar_recebedor_path; ?>">Cadastrar Recebedor</a>
-							<a href="<?php echo $editar_recebedor_path; ?>">Editar / Excluir Recebedor</a>
+							<!-- <a href="<?php echo $cadastrar_recebedor_path; ?>">Cadastrar Recebedor</a> -->
+							<!-- <a href="<?php echo $editar_recebedor_path; ?>">Editar / Excluir Recebedor</a> -->
 						</div>
 					</div>
 					<div class="dropdown">
