@@ -25,13 +25,28 @@ CREATE TABLE encomenda (
 	PRIMARY KEY (id),
 	FOREIGN KEY (morador_id) REFERENCES morador (id)
 );
+
+-- Não é necessária (por enquanto)		
+-- CREATE TABLE recebedor (
 	
-CREATE TABLE recebedor (
+-- 	id INT NOT NULL AUTO_INCREMENT,
+-- 	encomenda_id INT NOT NULL,
+-- 	nome VARCHAR(50) NOT NULL,
+-- 	telefone VARCHAR(20),
+-- 	PRIMARY KEY (id),
+-- 	FOREIGN KEY (encomenda_id) REFERENCES encomenda (id)
+-- );
+
+
+CREATE TABLE historico_entrega (
 	
-	id INT NOT NULL AUTO_INCREMENT,
+	id INT NOT NULL AUTO_INCREMENT,	
+	morador_entraga_id INT NOT NULL,
+	morador_recebe_id INT NOT NULL,	
 	encomenda_id INT NOT NULL,
-	nome VARCHAR(50) NOT NULL,
-	telefone VARCHAR(20),
+	data_entraga TIMESTAMP NOT NULL,
 	PRIMARY KEY (id),
+	FOREIGN KEY (morador_entraga_id) REFERENCES morador (id),
+	FOREIGN KEY (morador_recebe_id) REFERENCES morador (id),
 	FOREIGN KEY (encomenda_id) REFERENCES encomenda (id)
 );
