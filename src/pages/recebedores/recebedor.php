@@ -11,16 +11,13 @@ include_once "../../database/funcoes_gerais.php";
 
 <?php 
 
-/* connecting */
 $database = new Database();
 $db = $database->getConnection();
 
-/* criando objs */
 $recebedor = new Funcoes_gerais($db);
 $lista_recebedores = $recebedor->lista_recebedores();
 ?>
 
-<!-- Inicio tabela -->
 <table class="table">
 	<thead>
 		<tr>
@@ -32,12 +29,12 @@ $lista_recebedores = $recebedor->lista_recebedores();
 		</tr>
 	</thead>
 	<tbody>
+		<?php
+		session_start();
+		unset($_SESSION['recebedor_id']);
 		
-		<!-- Corpo tabela -->
-		<?php  
 		$qnt_recebedor = 1;
-		foreach ($lista_recebedores as $recebedor) {
-			
+		foreach ($lista_recebedores as $recebedor) {	
 			echo "
 			<tr>
 			<td>{$qnt_recebedor}</td>
@@ -45,6 +42,12 @@ $lista_recebedores = $recebedor->lista_recebedores();
 			<td>{$lista_recebedores[$qnt_recebedor-1][2]}</td>
 			<td>{$lista_recebedores[$qnt_recebedor-1][3]}</td>
 			<td>{$lista_recebedores[$qnt_recebedor-1][4]}</td>
+            <td>
+                <form action='/SGE/src/pages/moradores/editar/editar.php' method='POST' name='Form'>	
+                    <button type='submit' class='btn btn-info' name='btn_get_id' value='{$lista_recebedores[$qnt_recebedor-1][2]}'>Editar
+                    </button>
+                </form>
+            </td>
 			</tr>
 			";
 			$qnt_recebedor++;

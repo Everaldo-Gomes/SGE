@@ -2,7 +2,7 @@ body {
 	//background-color: rgba(0, 0, 0, 0.1);
 }
 
-#aux_field, #aux_nome, #aux_cpf, #aux_phone, #aux_endereco, #aux_recebe {
+#aux_field, #aux_nome, #aux_cpf, #aux_phone, #aux_endereco, #aux_recebe, #recebedor_id {
 	display: none;
 }
 
