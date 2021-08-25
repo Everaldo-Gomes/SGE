@@ -17,9 +17,9 @@ $cadastrar_morador_path = "/SGE/src/pages/moradores/inserir/morador.php";
 $editar_morador_path = "/SGE/src/pages/moradores/editar/morador.php";
 $acompanhar_encomenda_path = "";
 $historico_encomenda_path = "";
-$recebedore_path = "";
-$cadastrar_recebedor_path = "";
-$editar_recebedor_path = "";
+$recebedore_path = "/SGE/src/pages/recebedores/recebedor.php";
+//$cadastrar_recebedor_path = "";
+//$editar_recebedor_path = "";
 
 
 /* imagens */

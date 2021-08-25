@@ -54,7 +54,33 @@ class Funcoes_gerais {
 		$query = "UPDATE {$nomeTabela} SET excluido = 1 {$where}";
 		return $this->conn->query($query);
 	}
+
+	// Retorna os moradores que podem recebedor as Encomendas
+	public function lista_recebedores() {
+		
+		$lista_recebedores = array();
+		
+		$sql = "SELECT * FROM morador WHERE recebe = 1 AND excluido = 0";
+		$result = $this->conn->query($sql);
+		
+		if ($result->rowCount() > 0) {
+			foreach ($result as $data) {
+				array_push($lista_recebedores, $data);
+			}
+		}
+
+		return $lista_recebedores;
+	}
 }
+
+
+//desse modo está copiando cada elemente de cada array,
+//temos que apenas copiar os arrays, e não o que estã dentro dele (outra vez)
+//array_merge($lista_recebedores, $data);
+//$lista_recebedores = &$data;
+
+
+
 
 /* abre a conexao com o banco de dados
  * function conectar(){
