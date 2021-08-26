@@ -1,5 +1,5 @@
 <?php
-$title = 'SGC - Recebedores';
+$title = 'SGC - Histórico';
 include("../../routers.php");
 include("../../template/top.php");
 include_once "../../database/conexao.php";

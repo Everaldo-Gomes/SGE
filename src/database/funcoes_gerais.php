@@ -14,14 +14,13 @@ class Funcoes_gerais {
 
         $values = "'".implode("', '", $dados)."'";
      	$query = "INSERT INTO {$nomeTabela} ( {$fields} ) VALUES ( {$values} ) ";
-		echo $query;
 		return $this->conn->query($query);
     }
 
 	// ler registros e retorna os dados daquele que for encontrado
     public function lerRegistros($nomeTabela, $parametros = null, $fields = '*') {
 		
-        $query = "SELECT {$fields} FROM {$nomeTabela} {$parametros} AND excluido = 0";
+        $query = "SELECT {$fields} FROM {$nomeTabela} {$parametros}";
         $result = $this->conn->query($query);
 		$data = array();
 		
@@ -70,6 +69,21 @@ class Funcoes_gerais {
 		}
 
 		return $lista_recebedores;
+	}
+	
+	/* retorna o último id */
+	public function ultimo_id($tabela, $parametros) {
+		
+		$sql = "SELECT MAX(id) FROM {$tabela} encomenda WHERE {$parametros}";
+		$result = $this->conn->query($sql);
+
+		if ($result->rowCount() > 0) {
+			foreach($result as $id) {
+				return $id;
+				
+			}
+		}
+		else { return -1; }
 	}
 }
 
