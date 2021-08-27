@@ -23,7 +23,7 @@ class Funcoes_gerais {
         $query = "SELECT {$fields} FROM {$nomeTabela} {$parametros}";
         $result = $this->conn->query($query);
 		$data = array();
-		
+
         if($result->rowCount() == 0) {
 			return false;
 		}
@@ -53,23 +53,6 @@ class Funcoes_gerais {
 		$query = "UPDATE {$nomeTabela} SET excluido = 1 {$where}";
 		return $this->conn->query($query);
 	}
-
-	// Retorna os moradores que podem recebedor as Encomendas
-	public function lista_recebedores() {
-		
-		$lista_recebedores = array();
-		
-		$sql = "SELECT * FROM morador WHERE recebe = 1 AND excluido = 0";
-		$result = $this->conn->query($sql);
-		
-		if ($result->rowCount() > 0) {
-			foreach ($result as $data) {
-				array_push($lista_recebedores, $data);
-			}
-		}
-
-		return $lista_recebedores;
-	}
 	
 	/* retorna o último id */
 	public function ultimo_id($tabela, $parametros) {
@@ -84,6 +67,22 @@ class Funcoes_gerais {
 			}
 		}
 		else { return -1; }
+	}
+
+	/* retorna lista de itens */
+	public function lista_obj($tabela, $params = null, $fields) {
+		
+		$lista = array();
+		
+		$sql = "SELECT {$fields} FROM {$tabela} {$params}";
+		$result = $this->conn->query($sql);
+		
+		if ($result->rowCount() > 0) {
+			foreach ($result as $data) {
+				array_push($lista, $data);
+			}
+		}
+		return $lista;
 	}
 }
 

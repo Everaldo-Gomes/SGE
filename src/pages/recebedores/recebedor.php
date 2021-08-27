@@ -15,7 +15,9 @@ $database = new Database();
 $db = $database->getConnection();
 
 $recebedor = new Funcoes_gerais($db);
-$lista_recebedores = $recebedor->lista_recebedores();
+
+$params = "WHERE recebe = 1 AND excluido = 0";
+$lista_recebedores = $recebedor->lista_obj('morador', $params, '*');
 ?>
 
 <table class="table">

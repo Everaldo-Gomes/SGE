@@ -1,0 +1,13 @@
+#titulo {
+	position: relative;
+	font-family: Arial;
+	font-size: 25px;
+	font-weight: bold;
+	margin: 5% 0px 0px 10%;
+}
+
+.table {
+	position: relative;
+	margin: 5% auto;
+	width: 80%;	
+}
