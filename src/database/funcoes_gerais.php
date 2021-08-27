@@ -11,9 +11,10 @@ class Funcoes_gerais {
 
     // os nomes dos campos dos arrays tem que ser os mesmos dos campos da tabela sem passar pela remoção de sql injection
     public function gravarArrayNoBanco($nomeTabela, $fields, array $dados) {
-
+		
         $values = "'".implode("', '", $dados)."'";
      	$query = "INSERT INTO {$nomeTabela} ( {$fields} ) VALUES ( {$values} ) ";
+		
 		return $this->conn->query($query);
     }
 
@@ -76,7 +77,7 @@ class Funcoes_gerais {
 		
 		$sql = "SELECT {$fields} FROM {$tabela} {$params}";
 		$result = $this->conn->query($sql);
-		
+
 		if ($result->rowCount() > 0) {
 			foreach ($result as $data) {
 				array_push($lista, $data);

@@ -25,10 +25,10 @@ if (!$apenas_branco) {
 	//é necessário pegar o morador que vai está logado
 	$morador_logado_id = 1; // <-- URGENTE !!!! PRECISA MUDAR
 	//-------------------------------------------------------
-	
-	$fields = 'nome, cadastrada_morador_id, data_cadastro, previsao_data_entrega, foi_entregue';
-	$arrayDados = array($encomenda_nome, $morador_logado_id, date("Y-m-d H:i:s"), $previsao_entrega, 0); //0 é o campo "foi_entregue"
-	
+
+	$fields = 'nome, cadastrada_morador_id, data_cadastro, previsao_data_entrega, foi_entregue, excluido';
+	$arrayDados = array($encomenda_nome, $morador_logado_id, date("Y-m-d H:i:s"), $previsao_entrega, 0, 0); //0 é o campo "foi_entregue e excluida"
+
 	$encomenda = new funcoes_gerais($db);
 	$encomenda->gravarArrayNoBanco('encomenda', $fields, $arrayDados);
 
@@ -50,5 +50,8 @@ else {
 	/* aviso que encomenda não foi cadastrada */
 	session_start();
 	$_SESSION['encomenda_status'] = -1;
+
+	header("Location: " . $cadastrar_encomenda_path);
+	exit();
 }
 ?>

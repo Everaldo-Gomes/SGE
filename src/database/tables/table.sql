@@ -23,6 +23,7 @@ CREATE TABLE encomenda (
 	data_cadastro TIMESTAMP NOT NULL,
 	previsao_data_entrega TIMESTAMP NULL,
 	foi_entregue INT NOT NULL,
+	excluido INT NOT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY (cadastrada_morador_id) REFERENCES morador (id)
 );

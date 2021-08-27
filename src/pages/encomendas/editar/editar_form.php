@@ -6,7 +6,7 @@ include_once "../../../database/conexao.php";
 include_once "../../../database/funcoes_gerais.php";
 ?>
 <head><link rel="stylesheet" href="./editar.css"></head>
-
+<div id="encomenda_excluida"></div>
 <h3 id="titulo">Encomendas pendentes</h3>
 
 <?php
@@ -16,7 +16,7 @@ $db = $database->getConnection();
 
 $gerencia_obj = new Funcoes_gerais($db);
 
-$params = 'WHERE foi_entregue = 0';
+$params = 'WHERE foi_entregue = 0 AND excluido = 0';
 $lista_encomendas = $gerencia_obj->lista_obj('encomenda', $params, '*');
 ?>
 
@@ -43,9 +43,9 @@ $lista_encomendas = $gerencia_obj->lista_obj('encomenda', $params, '*');
 			<td>{$lista_encomendas[$qnt_encomenda-1][3]}</td>
 			<td>{$lista_encomendas[$qnt_encomenda-1][4]}</td>
             <td>
-                <form action='/SGE/src/pages/moradores/editar/editar.php' method='POST' name='Form'>	
-                    <button type='submit' class='btn btn-info' name='btn_editar' value='{$lista_encomendas[$qnt_encomenda-1][0]}'>Editar</button>
-                    <button type='submit' class='btn btn-danger' name='btn_cancelar' value='{$lista_encomendas[$qnt_encomenda-1][0]}'>Cancelar</button>
+                <form action='{$editar_encomenda_servico_path}' method='POST' name='Form'>	
+                    <button type='submit' onclick='confirm_submit()' class='btn btn-info' name='btn_editar' value='{$lista_encomendas[$qnt_encomenda-1][0]}'>Editar</button>
+                    <button type='submit' onclick='confirm_submit()' class='btn btn-danger' name='btn_cancelar' value='{$lista_encomendas[$qnt_encomenda-1][0]}'>Cancelar</button>
                 </form>
             </td>            
 			</tr>
@@ -55,5 +55,6 @@ $lista_encomendas = $gerencia_obj->lista_obj('encomenda', $params, '*');
 		?>
 	</tbody>
 </table>
+<input id="encomenda_status" type='text' name='aux_field' readonly value="<?php session_start(); echo $_SESSION['encomenda_cancelada'];?>">
 <script src="./editar.js"></script>
-<?php include("../../../template/bottom.php");?>
+<?php include("../../../template/bottom.php"); unset($_SESSION['encomenda_cancelada']);?>
