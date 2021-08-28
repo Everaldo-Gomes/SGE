@@ -28,16 +28,20 @@ input {
 	position: relative;
 	overflow: hidden;
 	font-family: Arial;
-	font-size: 15px;
+	font-size: 16px;
 	font-weight: bold;
 	border-radius: 20px;
 }
 
 .forms input[type="submit"] {
-	margin: 12% 0px 0px 16%;
+	margin: 12% 0px 0px 13%;
 	padding: 12px 80px;
 }
 
+.btn_edita_style {
+	margin: 12% 0px 0px 22%;
+	padding: 12px 80px;
+}
 
 .forms input[type="date"] {
 	margin: -3% 0px 0px 24%;
@@ -108,7 +112,7 @@ input {
 	}
 }
 
-#encomenda_id {
+#encomenda_id, #encomenda_id_edita, #encomenda_nome, #encomenda_data {
 	display: none;
 }
 

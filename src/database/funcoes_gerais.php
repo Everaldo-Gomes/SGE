@@ -37,7 +37,7 @@ class Funcoes_gerais {
 		return $data;
 	}
 
-	// alterar registro
+	// alterar registro Aplicada aos moradores
 	public function alterarRegistro($nomeTabela, array $fields, array $dados, $where = null) {
 
 		$values = "'".implode("', '", $dados)."'";
@@ -85,6 +85,14 @@ class Funcoes_gerais {
 		}
 		return $lista;
 	}
+
+	/* atualiza encomendas */
+	public function edita_encomenda($tabela, array $fields, array $dados, $param = null) {
+
+		$param = ($param) ? " WHERE {$param}" : null;
+		$sql = "UPDATE {$tabela} SET {$fields[0]} = '{$dados[0]}', {$fields[1]} = '{$dados[1]}' {$param}";
+		return $this->conn->query($sql);
+	} 
 }
 
 

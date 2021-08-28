@@ -42,8 +42,7 @@
 						<button class="dropbtn">Encomendas</button>
 						<div class="dropdown_content">
 							<a href="<?php echo $cadastrar_encomenda_path;?>">Cadastrar</a>
-							<a href="<?php echo $editar_encomenda_path; ?>">Editar / Cancelar</a>
-							<a href="<?php echo $acompanhar_encomenda_path; ?>">Acompanhar</a>
+							<a href="<?php echo $editar_encomenda_path; ?>">Gerenciar</a>
 							<a href="<?php echo $historico_encomenda_path; ?>">Histórico</a>
 							<a href="<?php echo $recebedore_path; ?>">Recebedores</a>
 						</div>

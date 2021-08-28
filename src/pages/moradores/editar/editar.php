@@ -88,7 +88,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		/* salva info para poder liberar e preencher os outros campos */
 		session_start();
 		$_SESSION['recebedor_id'] = $recebedor_id;
-		echo "< " . $_SESSION['recebedor_id'];
 		
 		/* redireciona para  a mesma pagina */
 		header("Location: " . $editar_morador_path);

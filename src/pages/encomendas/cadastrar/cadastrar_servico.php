@@ -8,6 +8,7 @@ $database = new Database();
 $db = $database->getConnection();
 
 /* informações vinda do front-end */
+$encomenda_id = $_POST['encomenda_id_nome'];
 $encomenda_nome = $_POST['encomenda_nome_field'];
 $previsao_entrega = $_POST['previsao_entrega_field'];
 
@@ -21,15 +22,35 @@ for ($i = 0; $i < strlen($encomenda_nome); $i++) {
 }
 
 if (!$apenas_branco) {
+	
+	$encomenda = new funcoes_gerais($db);
 
-	//é necessário pegar o morador que vai está logado
-	$morador_logado_id = 1; // <-- URGENTE !!!! PRECISA MUDAR
+	//URGENTE !!!! PRECISA MUDAR. é necessário pegar o morador que vai está logado
+	$morador_logado_id = 1; 
 	//-------------------------------------------------------
 
+	/* editando */
+	if ($_SERVER['REQUEST_METHOD'] === 'POST') {	
+		if (isset($_POST['btn_cadastra_edita_nome']) && $_POST['btn_cadastra_edita_nome'] == 'Editar Encomenda') {
+
+			$fields = array("nome", "previsao_data_entrega");
+			$dados = array($encomenda_nome, $previsao_entrega);
+			$encomenda->edita_encomenda('encomenda', $fields, $dados, "id = {$encomenda_id}"); 
+
+			/* cofirmação */
+			session_start();
+			$_SESSION['encomenda_editada'] = 1;
+			
+			/* redireciona */
+			header("Location: " . $editar_encomenda_path);
+			exit();
+		}
+	}
+	
+	/* cadastrando */
 	$fields = 'nome, cadastrada_morador_id, data_cadastro, previsao_data_entrega, foi_entregue, excluido';
 	$arrayDados = array($encomenda_nome, $morador_logado_id, date("Y-m-d H:i:s"), $previsao_entrega, 0, 0); //0 é o campo "foi_entregue e excluida"
 
-	$encomenda = new funcoes_gerais($db);
 	$encomenda->gravarArrayNoBanco('encomenda', $fields, $arrayDados);
 
 	/* aviso que encomenda foi cadastrada */

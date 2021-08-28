@@ -5,8 +5,9 @@ include("../../../template/top.php");
 include_once "../../../database/conexao.php";
 include_once "../../../database/funcoes_gerais.php";
 ?>
+<input id="encomenda_editada" type='text' readonly value="<?php session_start(); echo $_SESSION['encomenda_editada'];?>">
 <head><link rel="stylesheet" href="./editar.css"></head>
-<div id="encomenda_excluida"></div>
+<div id="encomenda_aviso"></div>
 <h3 id="titulo">Encomendas pendentes</h3>
 
 <?php
@@ -44,7 +45,7 @@ $lista_encomendas = $gerencia_obj->lista_obj('encomenda', $params, '*');
 			<td>{$lista_encomendas[$qnt_encomenda-1][4]}</td>
             <td>
                 <form action='{$editar_encomenda_servico_path}' method='POST' name='Form'>	
-                    <button type='submit' onclick='confirm_submit()' class='btn btn-info' name='btn_editar' value='{$lista_encomendas[$qnt_encomenda-1][0]}'>Editar</button>
+                    <button type='submit' class='btn btn-info' name='btn_editar' value='{$lista_encomendas[$qnt_encomenda-1][0]}'>Editar</button>
                     <button type='submit' onclick='confirm_submit()' class='btn btn-danger' name='btn_cancelar' value='{$lista_encomendas[$qnt_encomenda-1][0]}'>Cancelar</button>
                 </form>
             </td>            
@@ -55,6 +56,6 @@ $lista_encomendas = $gerencia_obj->lista_obj('encomenda', $params, '*');
 		?>
 	</tbody>
 </table>
-<input id="encomenda_status" type='text' name='aux_field' readonly value="<?php session_start(); echo $_SESSION['encomenda_cancelada'];?>">
+<input id="encomenda_status" type='text' readonly value="<?php session_start(); echo $_SESSION['encomenda_cancelada'];?>">
 <script src="./editar.js"></script>
-<?php include("../../../template/bottom.php"); unset($_SESSION['encomenda_cancelada']);?>
+<?php include("../../../template/bottom.php"); unset($_SESSION['encomenda_cancelada']); unset($_SESSION['encomenda_editada']);?>

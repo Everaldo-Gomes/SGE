@@ -12,7 +12,7 @@
 	width: 80%;	
 }
 
-.encomenda_excluida_ok {
+.encomenda_excluida_ok, .encomenda_editada_ok {
 	position: relative;
 	float: center;
 	overflow: hidden;
@@ -42,6 +42,6 @@
 	}
 }
 
-#encomenda_status {
+#encomenda_status, #encomenda_editada {
 	display: none;
 }
