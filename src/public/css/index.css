@@ -1,0 +1,59 @@
+.container_info {
+	position: relative;
+	width: 80%;
+	margin: 5% 0px 0px 8%;
+}
+
+.encomenda_entregar, .encomenda_receber {
+	width: 40%;
+	min-width: 40%;
+	position: relative;
+	float: left;
+	background-color: rgba(20,20,20,1);
+	margin: 0px 50px 50px 0px;
+	padding: 0px 0px 30px 0px;
+	border-radius: 10px;
+}
+
+.encomenda_receber {
+	margin: 0px 0px 0px 10%;
+	float: right;
+}
+
+#titulo_entregar, #titulo_receber {
+	font-size: 30px;
+	font-family: Arial;
+	color: white;
+	margin: 10px 0px 5% 15%;
+	position: relative;
+	display: inline-block;
+}
+
+#titulo_receber{
+	margin: 10px 0px 5% 16%;
+}
+
+.encomenda_box {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	display: inline-block;
+	width: 350px;
+	min-height: 50px;
+	padding: 5px;
+	margin: 0px 0px 10px 15%;
+	background-color: #eeeeee;
+	transition: 0.5s;
+	cursor: pointer;
+}
+
+.encomenda_box:hover {
+	box-shadow: 3px 3px 10px gray;
+	transition: 0.5s;
+}
+
+.encomenda_box_descricao {
+	display: flex;
+	flex-direction: column;
+} 

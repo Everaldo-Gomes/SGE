@@ -72,7 +72,7 @@ class Funcoes_gerais {
 
 	/* retorna lista de itens */
 	public function lista_obj($tabela, $params = null, $fields) {
-		
+
 		$lista = array();
 		
 		$sql = "SELECT {$fields} FROM {$tabela} {$params}";
