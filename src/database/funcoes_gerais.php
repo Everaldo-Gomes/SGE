@@ -37,6 +37,53 @@ class Funcoes_gerais {
 		return $data;
 	}
 
+    	// não sei onde estava sendo usado o metodo de cima, então fiz um um pouco diferente ao inves de mudar aquele
+        //não encontrei um jeito de colocar tddentro de um array com o nome do valor, só com o numero.
+        //dentro do "for ($i=0; $i < sizeof($res); $i++)" ali tem o array com os nomes e com os numeros, mas n consegui manipular com os nomes :/
+        public function lerRegistrosMoradoresAtivosInativos($nomeTabela, bool $excluido, $parametros = null, $fields = '*') {
+
+            $parametros = $this->ajustaParametrosAndExcluido($parametros, $excluido);
+            $query = "SELECT {$fields} FROM {$nomeTabela} {$parametros}";
+            $result = $this->conn->query($query);
+            $data = array();
+            
+            if(!$result) {
+                return false;
+            }
+            else {
+                foreach($result as $res) {
+                    $elementosDaBusca = array();
+                    for ($i=0; $i < sizeof($res); $i++) {
+                        if($i % 2 == 0){
+                            array_push($elementosDaBusca, $res[$i / 2]);
+                        }
+                    }
+                    array_push($data, $elementosDaBusca);
+                }
+            }
+            // echo("<pre>");
+            // var_dump($data);
+            // echo("</pre>");
+            return $data;
+        }
+
+        private function ajustaParametrosAndExcluido($parametros, bool $excluido){
+            if ($parametros !== null){
+                if($excluido){
+                    $parametros = $parametros."AND excluido = 1";
+                }else{
+                    $parametros = $parametros."AND excluido = 0";
+                }
+            }else {
+                if($excluido){
+                    $parametros = "WHERE excluido = 1";
+                }else{
+                    $parametros = "WHERE excluido = 0";
+                }
+            }
+            return($parametros);
+        }
+
 	// alterar registro
 	public function alterarRegistro($nomeTabela, array $fields, array $dados, $where = null) {
 
