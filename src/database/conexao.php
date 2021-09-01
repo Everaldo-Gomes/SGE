@@ -5,7 +5,7 @@ class Database {
 	private $host = "localhost";
 	private $db_name = "sge";
 	private $username = "root";
-	private $password = null;
+	private $password = "Gomes4412@";
 	public  $conn;
 
 	/* abri conexao */

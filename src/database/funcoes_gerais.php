@@ -11,7 +11,7 @@ class Funcoes_gerais {
 
     // os nomes dos campos dos arrays tem que ser os mesmos dos campos da tabela sem passar pela remoção de sql injection
     public function gravarArrayNoBanco($nomeTabela, $fields, array $dados) {
-
+		
         $values = "'".implode("', '", $dados)."'";
      	$query = "INSERT INTO {$nomeTabela} ( {$fields} ) VALUES ( {$values} ) ";
 		return $this->conn->query($query);
@@ -20,10 +20,10 @@ class Funcoes_gerais {
 	// ler registros e retorna os dados daquele que for encontrado
     public function lerRegistros($nomeTabela, $parametros = null, $fields = '*') {
 		
-        $query = "SELECT {$fields} FROM {$nomeTabela} {$parametros} AND excluido = 0";
+        $query = "SELECT {$fields} FROM {$nomeTabela} {$parametros}";
         $result = $this->conn->query($query);
 		$data = array();
-		
+
         if($result->rowCount() == 0) {
 			return false;
 		}
@@ -84,6 +84,7 @@ class Funcoes_gerais {
         }
 
 	// alterar registro
+	// alterar registro Aplicada aos moradores
 	public function alterarRegistro($nomeTabela, array $fields, array $dados, $where = null) {
 
 		$values = "'".implode("', '", $dados)."'";
@@ -100,7 +101,55 @@ class Funcoes_gerais {
 		$query = "UPDATE {$nomeTabela} SET excluido = 1 {$where}";
 		return $this->conn->query($query);
 	}
+	
+	/* retorna o último id */
+	public function ultimo_id($tabela, $parametros) {
+		
+		$sql = "SELECT MAX(id) FROM {$tabela} encomenda WHERE {$parametros}";
+		$result = $this->conn->query($sql);
+
+		if ($result->rowCount() > 0) {
+			foreach($result as $id) {
+				return $id;
+				
+			}
+		}
+		else { return -1; }
+	}
+
+	/* retorna lista de itens */
+	public function lista_obj($tabela, $params = null, $fields) {
+
+		$lista = array();
+		
+		$sql = "SELECT {$fields} FROM {$tabela} {$params}";
+		$result = $this->conn->query($sql);
+
+		if ($result->rowCount() > 0) {
+			foreach ($result as $data) {
+				array_push($lista, $data);
+			}
+		}
+		return $lista;
+	}
+
+	/* atualiza encomendas */
+	public function edita_encomenda($tabela, array $fields, array $dados, $param = null) {
+
+		$param = ($param) ? " WHERE {$param}" : null;
+		$sql = "UPDATE {$tabela} SET {$fields[0]} = '{$dados[0]}', {$fields[1]} = '{$dados[1]}' {$param}";
+		return $this->conn->query($sql);
+	} 
 }
+
+
+//desse modo está copiando cada elemente de cada array,
+//temos que apenas copiar os arrays, e não o que estã dentro dele (outra vez)
+//array_merge($lista_recebedores, $data);
+//$lista_recebedores = &$data;
+
+
+
 
 /* abre a conexao com o banco de dados
  * function conectar(){
