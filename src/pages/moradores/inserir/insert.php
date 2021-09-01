@@ -38,7 +38,7 @@ if ($nome !== " " || $cpf !== " ") {
 		
 		/* redireciona para  a mesma pagina */
 		header("Location: " . $cadastrar_morador_path);
-		exit();
+	exit();
 	}
 	else {
 		/* Falta colocar esse aviso no front */

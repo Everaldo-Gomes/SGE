@@ -21,6 +21,7 @@ var hidden_cpf = document.getElementById('aux_cpf').value;
 var hidden_phone = document.getElementById('aux_phone').value;
 var hidden_endereco = document.getElementById('aux_endereco').value;
 var hidden_recebe = document.getElementById('aux_recebe').value;
+var hidden_recebedor_id = document.getElementById('recebedor_id').value;
 
 /* se encontrar o cpf, mostra e organiza os outros campos */
 if (hidden_cpf > 0) {

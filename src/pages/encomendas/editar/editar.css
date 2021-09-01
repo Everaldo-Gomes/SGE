@@ -1,0 +1,47 @@
+#titulo {
+	position: relative;
+	font-family: Arial;
+	font-size: 25px;
+	font-weight: bold;
+	margin: 5% 0px 0px 10%;
+}
+
+.table {
+	position: relative;
+	margin: 5% auto;
+	width: 80%;	
+}
+
+.encomenda_excluida_ok, .encomenda_editada_ok {
+	position: relative;
+	float: center;
+	overflow: hidden;
+	font-family: Arial;
+	font-size: 19px;
+	color: white;
+	font-weight: bold;
+	padding: 0px 0px 0px 3%;
+	border-radius: 39px;
+	background-color: green;
+	width: 300px;
+	margin: 10px 10px 10px 43%;
+	opacity: 0;
+	animation-name: encomenda_excluida_ok;
+	animation-duration: 2s;
+}
+
+@keyframes encomenda_excluida_ok {
+	
+	0% {
+		opacity: 1;
+		margin: -1% 10px 10px 43%;
+	}
+	100%  {
+		opacity: 1;
+		margin: 1% 10px 10px 43%;
+	}
+}
+
+#encomenda_status, #encomenda_editada {
+	display: none;
+}

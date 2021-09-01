@@ -1,0 +1,119 @@
+.forms {
+	width: 550px;
+	height: 350px;
+	margin: 4% 50px 0px 33%;
+	padding: 50px;
+	background-color: rgba(20,20,20,1);
+	border-radius: 30px;
+}
+
+.forms input[type="text"] {
+	margin: 0px 0px 0px 10px;
+	padding: 10px 0px;
+	line-height: 17px;
+	font-size: 15px;
+	border-radius: 30px;
+	text-align: center;
+}
+
+.forms input[type="text"]::placeholder {
+	text-align: center;
+}
+
+input {
+    margin: .4rem;
+}
+
+.forms input[type="submit"], input[type="date"] {
+	position: relative;
+	overflow: hidden;
+	font-family: Arial;
+	font-size: 16px;
+	font-weight: bold;
+	border-radius: 20px;
+}
+
+.forms input[type="submit"] {
+	margin: 12% 0px 0px 13%;
+	padding: 12px 80px;
+}
+
+.btn_edita_style {
+	margin: 12% 0px 0px 22%;
+	padding: 12px 80px;
+}
+
+.forms input[type="date"] {
+	margin: -3% 0px 0px 24%;
+	padding: 10px 30px;
+}
+
+.forms label {
+	position: relative;
+	overflow: hidden;
+	font-family: Arial;
+	font-size: 15px;
+	color: white;
+	font-weight: bold;
+	margin: 5% 0px 0px 22%;
+	padding: 15px 40px;
+}
+
+.cadastro_ok, .cadastro_error {
+	position: relative;
+	float: center;
+	overflow: hidden;
+	font-family: Arial;
+	font-size: 19px;
+	color: white;
+	font-weight: bold;
+	padding: 0px 0px 0px 3%;
+	border-radius: 39px;
+}
+
+.cadastro_ok {
+	background-color: green;
+	width: 300px;
+	margin: 10px 10px 10px 43%;
+	opacity: 0;
+	animation-name: cadastro_encomenda_ok;
+	animation-duration: 2s;
+}
+
+.cadastro_error {
+	background-color: red;
+	width: 380px;
+	margin: 10px 10px 10px 39%;
+	animation-name: cadastro_encomenda_error;
+	animation-duration: 2s;
+}
+
+@keyframes cadastro_encomenda_ok {
+	
+	0% {
+		opacity: 1;
+		margin: -1% 10px 10px 43%;
+	}
+	100%  {
+		opacity: 1;
+		margin: 1% 10px 10px 43%;
+	}
+}
+
+@keyframes cadastro_encomenda_error {
+	
+	0% {
+		opacity: 1;
+		margin: -1% 10px 10px 39%;
+	}
+	100%  {
+		opacity: 1;
+		margin: 1% 10px 10px 39%;
+	}
+}
+
+#encomenda_id, #encomenda_id_edita, #encomenda_nome, #encomenda_data {
+	display: none;
+}
+
+	

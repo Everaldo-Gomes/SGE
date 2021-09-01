@@ -18,20 +18,25 @@ CREATE TABLE morador (
 CREATE TABLE encomenda (
 	
 	id INT NOT NULL AUTO_INCREMENT,
-	morador_id INT NOT NULL, 
-	num_pedido INT NOT NULL,
-	cod_rastreamento INT NOT NULL, 
-	data_entrega TIMESTAMP,
-	PRIMARY KEY (id),
-	FOREIGN KEY (morador_id) REFERENCES morador (id)
-);
-	
-CREATE TABLE recebedor (
-	
-	id INT NOT NULL AUTO_INCREMENT,
-	encomenda_id INT NOT NULL,
 	nome VARCHAR(50) NOT NULL,
-	telefone VARCHAR(20),
+	cadastrada_morador_id INT NOT NULL,
+	data_cadastro TIMESTAMP NOT NULL,
+	previsao_data_entrega TIMESTAMP NULL,
+	foi_entregue INT NOT NULL,
+	excluido INT NOT NULL,
 	PRIMARY KEY (id),
+	FOREIGN KEY (cadastrada_morador_id) REFERENCES morador (id)
+);
+
+CREATE TABLE historico_entrega (
+	
+	id INT NOT NULL AUTO_INCREMENT,	
+	morador_entraga_id INT NOT NULL,
+	morador_recebe_id INT NOT NULL,	
+	encomenda_id INT NOT NULL,
+	data_entraga TIMESTAMP NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (morador_entraga_id) REFERENCES morador (id),
+	FOREIGN KEY (morador_recebe_id) REFERENCES morador (id),
 	FOREIGN KEY (encomenda_id) REFERENCES encomenda (id)
 );

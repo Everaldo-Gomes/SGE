@@ -1,20 +1,11 @@
 .footer_container {
+	position: relative;
 	width: 100%;
 	background-color: rgba(20,20,20,1);
 	padding: 5px 14px 5px 5px;
-	margin: 0px;
+	margin: 0% 0px 0px 0px;
+	clear: both;
 }
-
-
-/* .footer_container .contatos { */
-/* 	position: relative; */
-/* 	margin: 10px 0px 0px 100px; */
-/* 	color: white; */
-/* 	font-size: 20px; */
-/* 	font-family: Arial; */
-/* 	display: inline-block; */
-/* } */
-
 
 .footer_container p#rights {
 	margin: 0px 0px 0px 0px;
