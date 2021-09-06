@@ -5,7 +5,7 @@ include("../../routers.php");
 include('./index_servico.php');
 ?>
 
-<link rel="stylesheet" href="/SGE/src/public/css/index.css"">
+<link rel="stylesheet" href="/SGE/src/public/css/index.css">
 
 <div class="container_info">
 	<aside class="encomenda_entregar">	
