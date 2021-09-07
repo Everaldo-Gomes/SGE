@@ -139,7 +139,31 @@ class Funcoes_gerais {
 		$param = ($param) ? " WHERE {$param}" : null;
 		$sql = "UPDATE {$tabela} SET {$fields[0]} = '{$dados[0]}', {$fields[1]} = '{$dados[1]}' {$param}";
 		return $this->conn->query($sql);
-	} 
+	}
+
+
+    public function alterarRegistroComArrayAssociativo($nomeTabela, array $dados, $where = null) {
+
+        $stringBuilder = "";
+        
+        foreach($dados as $chave => $valor){
+            $stringBuilder .= "{$chave} = {$valor}, ";
+        }
+        
+        $where = ($where) ? " WHERE {$where}" : null;
+        
+        $query = "UPDATE {$nomeTabela} SET ".substr($stringBuilder, 0, -2).$where;
+
+        return $this->conn->query($query);
+		
+	}
+
+
+    public function formataInputStringBanco($inputString) {
+        return "'".$inputString."'";
+    }
+
+
 }
 
 
