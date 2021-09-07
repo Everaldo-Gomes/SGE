@@ -17,6 +17,8 @@ $historico_encomenda_path = "/SGE/src/pages/historico_encomenda/historico.php";
 $recebedore_path = "/SGE/src/pages/recebedores/recebedor.php";
 $cadastrar_encomenda_path = "/SGE/src/pages/encomendas/cadastrar/cadastrar_form.php";
 $editar_encomenda_path = "/SGE/src/pages/encomendas/editar/editar_form.php";
+$entregar_encomenda_path = "/SGE/src/pages/encomendas/acao/entregar/entregar_form.php";
+$receber_encomenda_path = "/SGE/src/pages/encomendas/acao/receber/receber_form.php";
 
 
 /* páginas serviços */
