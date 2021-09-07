@@ -10,7 +10,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title><?php echo $title; ?></title>
 		<link rel="stylesheet" href="<?php echo $bootstrap_css_path; ?>">
-		<link rel="stylesheet" href="<?php echo $bootstrap_js_path; ?>">
+		<!-- <link rel="stylesheet" href="<?php echo $bootstrap_js_path; ?>"> -->
 		<link rel="stylesheet" href="<?php echo $template_top_path; ?>">
 		<link rel="stylesheet" href="<?php echo $template_bottom_path; ?>">
 	</head>

@@ -18,6 +18,9 @@ $recebedore_path = "/SGE/src/pages/recebedores/recebedor.php";
 $cadastrar_encomenda_path = "/SGE/src/pages/encomendas/cadastrar/cadastrar_form.php";
 $editar_encomenda_path = "/SGE/src/pages/encomendas/editar/editar_form.php";
 $listar_morador_path = "/SGE/src/pages/moradores/listar/lista.php";
+$entregar_encomenda_path = "/SGE/src/pages/encomendas/acao/entregar/entregar_form.php";
+$receber_encomenda_path = "/SGE/src/pages/encomendas/acao/receber/receber_form.php";
+
 
 /* páginas serviços */
 $index_servico_path = "/SGE/src/index_servico.php";

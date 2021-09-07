@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="512"
-   height="512"
-   viewBox="0 0 135.46667 135.46667"
+   width="100"
+   height="100"
+   viewBox="0 0 26.458333 26.458334"
    version="1.1"
    id="svg5"
    inkscape:version="1.1 (ce6663b3b7, 2021-05-25)"
@@ -21,15 +21,17 @@
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
-     inkscape:document-units="px"
+     inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.5234375"
-     inkscape:cx="314.26866"
-     inkscape:cy="192"
+     units="px"
+     width="100px"
+     inkscape:zoom="3.356734"
+     inkscape:cx="58.241136"
+     inkscape:cy="48.410151"
      inkscape:window-width="1366"
      inkscape:window-height="707"
      inkscape:window-x="0"
-     inkscape:window-y="24"
+     inkscape:window-y="0"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
@@ -40,15 +42,18 @@
      id="layer1">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:91.9686px;line-height:1.25;font-family:Impact;-inkscape-font-specification:'Impact, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.29921"
-       x="4.9759521"
-       y="95.907051"
-       id="text4457"
-       transform="scale(0.90804872,1.1012625)"><tspan
+       style="font-style:normal;font-weight:normal;font-size:29.9563px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.748911"
+       x="0.087527022"
+       y="16.047552"
+       id="text812"
+       transform="scale(0.68712722,1.4553346)"
+       inkscape:export-filename="/home/main/Desktop/l.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
-         id="tspan4455"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:91.9686px;font-family:Impact;-inkscape-font-specification:'Impact, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:2.29921"
-         x="4.9759521"
-         y="95.907051">SGE</tspan></text>
+         id="tspan810"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.9563px;font-family:Dhurjati;-inkscape-font-specification:'Dhurjati, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.748911;fill:#ffffff"
+         x="0.087527022"
+         y="16.047552">SGE</tspan></text>
   </g>
 </svg>

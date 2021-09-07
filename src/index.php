@@ -5,16 +5,16 @@ include("../../routers.php");
 include('./index_servico.php');
 ?>
 
-<link rel="stylesheet" href="/SGE/src/public/css/index.css"">
+<link rel="stylesheet" href="/SGE/src/public/css/index.css">
 
 <div class="container_info">
 	<aside class="encomenda_entregar">	
 		<p id="titulo_entregar">Disponíveis para a entrega</p>
-		<?php echo carrega_entregar();?>
+		<?php carrega_itens('!=', 0);?>
 	</aside>
 	<aside class="encomenda_receber">
 		<p id="titulo_receber">Encomendas a receber</p>
-		<?php echo carrega_receber();?>
+		<?php carrega_itens('=', 1);?>
 	</aside>
 </div>
 
