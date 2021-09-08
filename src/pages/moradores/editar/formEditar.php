@@ -37,22 +37,26 @@ if(isset($_GET['id'])){
 	</head>
 	<body>
 	<link rel="stylesheet" href="<?php echo $bootstrap_css_path ?>">
-	<link rel="stylesheet" href="./morador.css">
-		<form class="forms" action="backEditarMorador.php" method="POST">
+	<link rel="stylesheet" href="./formEditar.css">
+		<form class="formEditar" action="backEditarMorador.php" method="POST">
 			<input type="hidden" name="idMoradorEdicao" value="<?php echo($morador['id']);?>">
 			<div class="form-group">
+				<label for="input_nome">Nome:</label>
 				<input id="input_nome" class="form-control" type="text" name="nomeMoradorEdicao" value="<?php echo($morador['nome']);?>">
 			</div>
 
 			<div class="form-group">
+				<label for="input_cpf">CPF:</label>
 				<input id="input_cpf" class="form-control" type="text" name="cpfMoradorEdicao" value="<?php echo($morador['cpf']);?>" placeholder="CPF">
 			</div>
 
 			<div class="form-group">
+				<label for="input_telefone">Telefone:</label>
 				<input id="input_telefone" class="form-control" type="text" name="telefoneMoradorEdicao" value="<?php echo($morador['telefone']);?>" placeholder="Telefone">
 			</div>
 
 			<div class="form-group">
+				<label for="input_endereco">Endereco:</label>
 				<input id="input_endereco" class="form-control"type="text" name="enderecoMoradorEdicao" value="<?php echo($morador['endereco']);?>" placeholder="Endereço">
 			</div>
 			<div>

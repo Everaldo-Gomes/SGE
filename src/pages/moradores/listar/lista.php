@@ -25,8 +25,8 @@ $moradores = $funcoesBanco-> lerRegistrosMoradoresAtivosInativos('morador', fals
                     <th scope="col">Nome</th>
                     <th scope="col">Telefone</th>
                     <th scope="col">Endereco</th>
-                    <th>Editar</th>
-                    <th>Remover</th>
+                    <th>Recebedor</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,8 +36,11 @@ $moradores = $funcoesBanco-> lerRegistrosMoradoresAtivosInativos('morador', fals
                         <td><?= $moradorRegistrado['1']; ?></td>
                         <td><?= $moradorRegistrado['3']; ?></td>
                         <td><?= $moradorRegistrado['4']; ?></td>
-                        <td><a href="/SGE/src/pages/moradores/editar/formEditar.php?id=<?=$moradorRegistrado['0']?>" class="btn btn-warning" role="button">Editar</span></a></td>
-                        <td><a href="/SGE/src/pages/moradores/editar/removerMorador.php?id=<?=$moradorRegistrado['0']?>" class="btn btn-danger" role="button">Remover</span></a></a></td>
+                        <td><?php echo($moradorRegistrado['5'] == 0 ? "Não" : "Sim");?></td>
+                        <td>
+                            <a href="/SGE/src/pages/moradores/editar/formEditar.php?id=<?=$moradorRegistrado['0']?>" class="btn btn-warning" role="button">Editar</span></a>
+                            <a href="/SGE/src/pages/moradores/editar/removerMorador.php?id=<?=$moradorRegistrado['0']?>" class="btn btn-danger" role="button">Remover</span></a>
+                        </td>
                     </tr>
                 <?php } ?>
             </tbody>
