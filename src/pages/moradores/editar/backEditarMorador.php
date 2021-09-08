@@ -15,7 +15,7 @@ if(isset($_POST['idMoradorEdicao'])){
 
     $parametros = "id = {$_POST['idMoradorEdicao']}";
     
-    $recebedor = $_POST['recebedorMoradorEdicao'] == 0 ? "0" : "1";
+    $recebedor = isset($_POST['recebedorMoradorEdicao']) ? 1 : 0;
     
     $dados = array(
         'nome' => $funcoesBanco -> formataInputStringBanco($_POST['nomeMoradorEdicao']),

@@ -40,7 +40,7 @@ class Funcoes_gerais {
         //não encontrei um jeito de colocar tddentro de um array com o nome do valor, só com o numero.
         //dentro do "for ($i=0; $i < sizeof($res); $i++)" ali tem o array com os nomes e com os numeros, mas n consegui manipular com os nomes :/
         public function lerRegistrosMoradoresAtivosInativos($nomeTabela, bool $excluido, $parametros = null, $fields = '*') {
-
+            
             $parametros = $this->ajustaParametrosAndExcluido($parametros, $excluido);
             $query = "SELECT {$fields} FROM {$nomeTabela} {$parametros}";
             $result = $this->conn->query($query);
@@ -61,7 +61,7 @@ class Funcoes_gerais {
                 }
             }
             // echo("<pre>");
-            // var_dump($data);
+            // var_dump($query);
             // echo("</pre>");
             return $data;
         }
@@ -69,9 +69,9 @@ class Funcoes_gerais {
         private function ajustaParametrosAndExcluido($parametros, bool $excluido){
             if ($parametros !== null){
                 if($excluido){
-                    $parametros = $parametros."AND excluido = 1";
+                    $parametros = "WHERE ".$parametros." AND excluido = 1";
                 }else{
-                    $parametros = $parametros."AND excluido = 0";
+                    $parametros = "WHERE ".$parametros." AND excluido = 0";
                 }
             }else {
                 if($excluido){
@@ -153,7 +153,6 @@ class Funcoes_gerais {
         $where = ($where) ? " WHERE {$where}" : null;
         
         $query = "UPDATE {$nomeTabela} SET ".substr($stringBuilder, 0, -2).$where;
-
         return $this->conn->query($query);
 		
 	}
