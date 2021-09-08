@@ -30,6 +30,8 @@ $lista_encomendas = $gerencia_obj->lista_obj('encomenda', $params, '*');
 			<th scope="col">Nome</th>
 			<th scope="col">Data de cadastro</th>
 			<th scope="col">Previsão Entrega</th>
+			<th></th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -48,7 +50,8 @@ $lista_encomendas = $gerencia_obj->lista_obj('encomenda', $params, '*');
                     <button type='submit' class='btn btn-info' name='btn_editar' value='{$lista_encomendas[$qnt_encomenda-1][0]}'>Editar</button>
                     <button type='submit' onclick='confirm_submit()' class='btn btn-danger' name='btn_cancelar' value='{$lista_encomendas[$qnt_encomenda-1][0]}'>Cancelar</button>
                 </form>
-            </td>            
+            </td> 
+			<td><a href='/SGE/src/pages/encomendas/acao/entregar/entregar_form.php?id={$lista_encomendas[$qnt_encomenda-1][0]}' class='btn btn-primary' role='button'>Entregar</span></a></td>
 			</tr>
 			";
 			$qnt_encomenda++;
