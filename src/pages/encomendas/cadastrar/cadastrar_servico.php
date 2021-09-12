@@ -47,17 +47,18 @@ if (!$apenas_branco) {
 		}
 	}
 	
-	/* cadastrando */
-	$fields = 'nome, cadastrada_morador_id, data_cadastro, previsao_data_entrega, foi_entregue, excluido';
-	$arrayDados = array($encomenda_nome, $morador_logado_id, date("Y-m-d H:i:s"), $previsao_entrega, 0, 0); //0 é o campo "foi_entregue e excluida"
-
+	/* cadastrando 
+	   por padrão quando uma encomenda é cadastrada o ID do morador que vai entregar vai ser o próprio morador que está cadastrando */
+	$fields = 'nome, cadastrada_morador_id, entregador_id, data_cadastro, previsao_data_entrega, foi_entregue, excluido';
+	$arrayDados = array($encomenda_nome, $morador_logado_id, $morador_logado_id, date("Y-m-d H:i:s"), $previsao_entrega, 0, 0); //0 é o campo "foi_entregue e excluida"
+	
 	$encomenda->gravarArrayNoBanco('encomenda', $fields, $arrayDados);
 
 	/* aviso que encomenda foi cadastrada */
 	session_start();
 	$_SESSION['encomenda_status'] = 1;
 	
-	/* retorna o id da encomenda cadastrada APENAS por este morado 
+	/* retorna o id da encomenda cadastrada APENAS pora este morado 
 	   para que o morador possa consultar/editar  */
 
 	//NÃO está sendo usada, mas funciona

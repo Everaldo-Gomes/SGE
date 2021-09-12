@@ -17,7 +17,7 @@ class Funcoes_gerais {
 		return $this->conn->query($query);
     }
 
-	// ler registros e retorna os dados daquele que for encontrado
+	// ler registros e retorna os dados daquele que for encontrado (registros de uma ÚNICA tabela)
     public function lerRegistros($nomeTabela, $parametros = null, $fields = '*') {
 		
         $query = "SELECT {$fields} FROM {$nomeTabela} {$parametros}";
@@ -36,52 +36,76 @@ class Funcoes_gerais {
 		return $data;
 	}
 
-    	// não sei onde estava sendo usado o metodo de cima, então fiz um um pouco diferente ao inves de mudar aquele
-        //não encontrei um jeito de colocar tddentro de um array com o nome do valor, só com o numero.
-        //dentro do "for ($i=0; $i < sizeof($res); $i++)" ali tem o array com os nomes e com os numeros, mas n consegui manipular com os nomes :/
-        public function lerRegistrosMoradoresAtivosInativos($nomeTabela, bool $excluido, $parametros = null, $fields = '*') {
-            
-            $parametros = $this->ajustaParametrosAndExcluido($parametros, $excluido);
-            $query = "SELECT {$fields} FROM {$nomeTabela} {$parametros}";
-            $result = $this->conn->query($query);
-            $data = array();
-            
-            if(!$result) {
-                return false;
-            }
-            else {
-                foreach($result as $res) {
-                    $elementosDaBusca = array();
-                    for ($i=0; $i < sizeof($res); $i++) {
-                        if($i % 2 == 0){
-                            array_push($elementosDaBusca, $res[$i / 2]);
-                        }
-                    }
-                    array_push($data, $elementosDaBusca);
-                }
-            }
-            // echo("<pre>");
-            // var_dump($query);
-            // echo("</pre>");
-            return $data;
-        }
 
-        private function ajustaParametrosAndExcluido($parametros, bool $excluido){
-            if ($parametros !== null){
-                if($excluido){
-                    $parametros = "WHERE ".$parametros." AND excluido = 1";
-                }else{
-                    $parametros = "WHERE ".$parametros." AND excluido = 0";
-                }
-            }else {
-                if($excluido){
-                    $parametros = "WHERE excluido = 1";
-                }else{
-                    $parametros = "WHERE excluido = 0";
-                }
-            }
-            return($parametros);
+	//mesma função da "lerRegistros", só que essa usa o JOIN, para buscar info em mais uma tabela
+	public function lerRegistrosJoin($tabela1, $tabela2, $comparacao, $params = NULL) {
+
+		$params = $params === NULL ? NULL : "WHERE t1.{$params}";
+		$query = "SELECT t1.*, t2.* FROM {$tabela1} t1 JOIN {$tabela2} t2 ON t2.{$comparacao} = t1.{$comparacao} $params";
+		$result = $this->conn->query($query);
+		$data = array();
+		
+		if($result->rowCount() == 0) {
+			return false;
+		}
+		else {
+			foreach($result as $res) { 
+				array_merge($data, $res);
+				$data = &$res;
+			}
+		}
+		
+		return $data;
+	}
+
+	
+
+    // não sei onde estava sendo usado o metodo de cima, então fiz um um pouco diferente ao inves de mudar aquele
+    //não encontrei um jeito de colocar tddentro de um array com o nome do valor, só com o numero.
+    //dentro do "for ($i=0; $i < sizeof($res); $i++)" ali tem o array com os nomes e com os numeros, mas n consegui manipular com os nomes :/
+    public function lerRegistrosMoradoresAtivosInativos($nomeTabela, bool $excluido, $parametros = null, $fields = '*') {
+        
+        $parametros = $this->ajustaParametrosAndExcluido($parametros, $excluido);
+        $query = "SELECT {$fields} FROM {$nomeTabela} {$parametros}";
+        $result = $this->conn->query($query);
+        $data = array();
+        
+        if(!$result) {
+            return false;
         }
+        else {
+            foreach($result as $res) {
+                $elementosDaBusca = array();
+                for ($i=0; $i < sizeof($res); $i++) {
+                    if($i % 2 == 0){
+                        array_push($elementosDaBusca, $res[$i / 2]);
+                    }
+                }
+                array_push($data, $elementosDaBusca);
+            }
+        }
+        // echo("<pre>");
+        // var_dump($query);
+        // echo("</pre>");
+        return $data;
+    }
+
+    private function ajustaParametrosAndExcluido($parametros, bool $excluido){
+        if ($parametros !== null){
+            if($excluido){
+                $parametros = "WHERE ".$parametros." AND excluido = 1";
+            }else{
+                $parametros = "WHERE ".$parametros." AND excluido = 0";
+            }
+        }else {
+            if($excluido){
+                $parametros = "WHERE excluido = 1";
+            }else{
+                $parametros = "WHERE excluido = 0";
+            }
+        }
+        return($parametros);
+    }
 
 	// alterar registro
 	// alterar registro Aplicada aos moradores

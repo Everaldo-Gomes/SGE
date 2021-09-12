@@ -54,7 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btn_encomenda'])) {
 	/* se ação == 1, clicou em receber encomendas */
 	if ($acao) {
 
-		header("Location: " . $receber_encomenda_path);
+		//header("Location: " . $receber_encomenda_path);
+		header("Location: " . $receber_encomenda_servico_path);
 		exit();
 	}
 

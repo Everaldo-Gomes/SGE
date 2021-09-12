@@ -25,6 +25,7 @@ $receber_encomenda_path = "/SGE/src/pages/encomendas/acao/receber/receber_form.p
 /* páginas serviços */
 $index_servico_path = "/SGE/src/index_servico.php";
 $editar_encomenda_servico_path = "/SGE/src/pages/encomendas/editar/editar_servico.php";
+$receber_encomenda_servico_path = "/SGE/src/pages/encomendas/acao/receber/receber_servico.php";
 
 
 /* imagens */
