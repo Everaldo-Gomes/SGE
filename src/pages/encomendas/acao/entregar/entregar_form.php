@@ -1,21 +1,57 @@
 <?php
+
+$title = 'SGC - Entrengar';
+include("../../../../routers.php");
+include("../../../../template/top.php");
+
+session_start();
+//o array $_SESSION['encomenda_info'] tem todas as info sobre a encomenda que foram obtidas quando foi clicado na encomenda 
+?>
+
+<head><link rel="stylesheet" href="./entregar.css"></head>
+
+<div class="encomenda_info">
+	<div class="encomenda_box">
+		<h3 class="e_info">Sobre a encomenda </br> e seu destinatário</h3>
+		<hr class="hr_top">
+		<label>
+			<div class="e_info">
+				Destinatário </br>
+				<?php echo $_SESSION['encomenda_info'][0]; ?>
+			</div></br>
+			<div class="e_info">
+				Endereço </br>
+				<?php echo $_SESSION['encomenda_info'][12]; ?>
+			</div></br>
+			<div class="e_info">
+				Encomenda </br>
+				<?php echo $_SESSION['encomenda_info'][1]; ?>
+			</div></br>
+			<div class="e_info">
+				Data entrega </br>
+				<?php echo $_SESSION['encomenda_info'][5]; ?>
+			</div></br>
+		</label>
+	</div>
+</div>
+
+<?php
+
+//------------------------------------- IMPORTANTE ------------------------------------
+
+// código abaixo foi removido, porque o que foi posto aqui não é o propósito da página
+
+//-------------------------------------------------------------------------------------
+
+
 //pra ca vem o id da encomenda que vai ser entregue por $_GET
 
-include_once "../../../../database/conexao.php";
-include_once "../../../../database/funcoes_gerais.php";
-include_once "../../../../routers.php";
-
-include_once "../../../../template/top.php";
-
-$database = new Database();
-$db = $database->getConnection();
-
-$funcoesBanco = new Funcoes_gerais($db);
-
-$parametros = " recebe = 1 ";
-
-$moradoresAtivos = $funcoesBanco-> lerRegistrosMoradoresAtivosInativos('morador', false);
-$entregadores = $funcoesBanco -> lerRegistrosMoradoresAtivosInativos('morador', false, $parametros);
+/* $funcoesBanco = new Funcoes_gerais($db);
+ * 
+ * $parametros = " recebe = 1 ";
+ * 
+ * $moradoresAtivos = $funcoesBanco-> lerRegistrosMoradoresAtivosInativos('morador', false);
+ * $entregadores = $funcoesBanco -> lerRegistrosMoradoresAtivosInativos('morador', false, $parametros); */
 
 //echo("<pre>");
 //print_r($moradoresAtivos);
@@ -25,49 +61,47 @@ $entregadores = $funcoesBanco -> lerRegistrosMoradoresAtivosInativos('morador', 
 // echo("</pre>");
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 
-<html lang="pt-bt">
-    <div class="container">
-        <div class="mt-5 row">
-            <div class="mt-5 col-sm-12">
-                <form action="confirmarEntrega.php" method="post">
-                    <div class="form-group">
-                        <label for="select_entregador">Entregador:</label>
-                        <select class="form-control" name="" id="select_entregador" required>
-                            <?php
-                                for ($i=0; $i < count($entregadores) ; $i++) { 
-                                    echo("<option value='{$entregadores[$i]['0']}'>{$entregadores[$i]['1']}</option>");
-                                }
-                            ?>
-                        </select>
-                    </div>
+	 <html lang="pt-bt">
+     <div class="container">
+	 <div class="mt-5 row">
+	 <div class="mt-5 col-sm-12">
+	 <form action="confirmarEntrega.php" method="post">
+	 <div class="form-group">
+	 <label for="select_entregador">Entregador:</label>
+	 <select class="form-control" name="" id="select_entregador" required>
+	 <?php
+	 for ($i=0; $i < count($entregadores) ; $i++) { 
+	 echo("<option value='{$entregadores[$i]['0']}'>{$entregadores[$i]['1']}</option>");
+	 }
+	 ?>
+	 </select>
+	 </div>
 
-                    <div class="form-group">
-                        <label for="select_recebedor">Recebedor:</label>
-                        <select class="form-control" name="" id="select_entregador" required>
-                            <?php
-                                for ($i=0; $i < count($moradoresAtivos) ; $i++) { 
-                                    echo("<option value='{$moradoresAtivos[$i]['0']}'>{$moradoresAtivos[$i]['1']}</option>");
-                                }
-                            ?>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="input_data_entrega"></label>
-                        <input name="" id="input_data_entrega" type="date" required>
-                    </div>
-                    
-                </form>
-            </div>
-        </div>
-    </div>
-</html>
-
-
-
+	 <div class="form-group">
+	 <label for="select_recebedor">Recebedor:</label>
+	 <select class="form-control" name="" id="select_entregador" required>
+	 <?php
+	 for ($i=0; $i < count($moradoresAtivos) ; $i++) { 
+	 echo("<option value='{$moradoresAtivos[$i]['0']}'>{$moradoresAtivos[$i]['1']}</option>");
+	 }
+	 ?>
+	 </select>
+	 </div>
+	 
+	 <div class="form-group">
+	 <label for="input_data_entrega"></label>
+	 <input name="" id="input_data_entrega" type="date" required>
+	 </div>
+	 
+	 </form>
+	 </div>
+	 </div>
+     </div>
+	 </html>
+   ---------------------------------------------------------------------------------->
 
 
-
-<?php include_once "../../../../template/bottom.php";?>
+<script src="./entregar.js"></script>
+<?php include("../../../../template/bottom.php"); unset($_SESSION['encomenda_info']);?>

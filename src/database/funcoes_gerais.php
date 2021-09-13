@@ -40,6 +40,23 @@ class Funcoes_gerais {
 	//mesma função da "lerRegistros", só que essa usa o JOIN, para buscar info em mais uma tabela
 	public function lerRegistrosJoin($tabela1, $tabela2, $comparacao, $params = NULL) {
 
+		/* 
+		   
+		   Fazendo umas mudanças aqui...
+		   
+		   encomenda id -> encomenda info -> cadastrada_pelo_morador_id -> morador_info
+		   encomenda id -> encomenda info -> entregador_id -> morador_info (entregador)
+
+		   SELECT t1.nome, t1.data_cadastro, t1.previsao_data_entrega, t1.foi_entregue FROM {tabela1} t1 
+		   JOIN {tabela2} t2 ON t2.id = t1.cadastrada_morador_id WHERE t1.id = 1 
+		   
+		   UNION 
+		   
+		   SELECT t2.nome, t2.cpf, t2.telefone, t2.endereco FROM {tabela1} t1 
+		   JOIN {tabela2} t2 ON t2.id = t1.cadastrada_morador_id WHERE t2.id = 2;
+
+		 */
+		
 		$params = $params === NULL ? NULL : "WHERE t1.{$params}";
 		$query = "SELECT t1.*, t2.* FROM {$tabela1} t1 JOIN {$tabela2} t2 ON t2.{$comparacao} = t1.{$comparacao} $params";
 		$result = $this->conn->query($query);

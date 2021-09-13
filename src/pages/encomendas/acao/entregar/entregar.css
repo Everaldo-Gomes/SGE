@@ -1,0 +1,33 @@
+.encomenda_info {
+	position: relative;
+	width: 80%;
+	height: auto;
+	margin: 5% 0px 0px 8%;
+	display: inline-block;
+}
+
+.hr_top {
+	border: 1px solid orange;
+	border-radius: 5px;
+}
+.encomenda_box {
+	width: 40%;
+	min-width: 40%;
+	position: relative;
+	margin: 0px 0px 0px 0px;
+	font-family: Arial;
+	font-size: 25px;
+	text-align: center;
+	color: white;
+	border-style: solid;
+	border-size: 30px;
+	border-color: orange;
+	border-radius: 15px;
+	background-color: rgba(10, 10, 10, 1);
+}
+
+.e_info {
+	position: relative;
+	text-align: center;
+	margin: 10px 0px 0px 10px;
+}

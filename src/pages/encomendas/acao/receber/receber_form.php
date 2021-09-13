@@ -3,16 +3,12 @@
 $title = 'SGC - Receber';
 include("../../../../routers.php");
 include("../../../../template/top.php");
+
+session_start();
+//o array $_SESSION['encomenda_info'] tem todas as info sobre a encomenda que foram obtidas quando foi clicado na encomenda 
 ?>
 
 <head><link rel="stylesheet" href="./receber.css"></head>
-
-<?php 
-session_start();
-
-//esse array tem todas as info sobre a encomenda que foram obtidas quando foi clicado na encomenda
-//$_SESSION['encomenda_id']; 
-?>
 
 <div class="encomenda_info">
 	<div class="encomenda_box">
@@ -21,15 +17,15 @@ session_start();
 		<label>
 			<div class="e_info">
 				Nome </br>
-				<?php echo $_SESSION['encomenda_id'][1]; ?>
+				<?php echo $_SESSION['encomenda_info'][1]; ?>
 			</div></br>
 			<div class="e_info">
 				Data Entrega </br>
-				<?php echo $_SESSION['encomenda_id'][5]; ?>
+				<?php echo $_SESSION['encomenda_info'][5]; ?>
 			</div></br>
 			<div class="e_info">
 				Status </br>
-				<?php echo $_SESSION['encomenda_id'][6] == 0 ? "A caminho" : "Entregue"; ?>
+				<?php echo $_SESSION['encomenda_info'][6] == 0 ? "A caminho" : "Entregue"; ?>
 			</div></br>
 		</label>
 	</div>
@@ -39,22 +35,22 @@ session_start();
 		
 		<!-- O CASO EM QUE NENHUM ENTREGADOR SE OFERECEU PARA ENTREGAR SUA ENCOMENDA-->
 		<?php
-		$id_logado = 2; /* MUDAR  para  a pessoa logada */
+		$id_logado = 1; /* MUDAR  para  a pessoa logada */
 
-		if ($id_logado != $_SESSION['encomenda_id'][2]) {
+		if ($id_logado != $_SESSION['encomenda_info'][2]) {
 
 			echo "
             <div class='e_info'> 
-			    Entregador </br> 
-                {$_SESSION['encomenda_id'][9]} 
+			    Nome </br> 
+                {$_SESSION['encomenda_info'][9]} 
             </div></br>
 			<div class='e_info'> 
    			    Telefone </br> 
-                {$_SESSION['encomenda_id'][11]} 
+                {$_SESSION['encomenda_info'][11]} 
             </div></br>
 			<div class='e_info'> 
                 Endereço </br> 
-                {$_SESSION['encomenda_id'][12]} 
+                {$_SESSION['encomenda_info'][12]} 
             </div></br>
 			";
 		}
@@ -67,4 +63,4 @@ session_start();
 
 
 <script src="./receber.js"></script>
-<?php include("../../../../template/bottom.php"); unset($_SESSION['encomenda_id']);?>
+<?php include("../../../../template/bottom.php"); unset($_SESSION['encomenda_info']);?>

@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btn_encomenda'])) {
 	/* clicou em entregar encomendas */
 	else {
 		
-		header("Location: " . $entregar_encomenda_path);
+		header("Location: " . $entregar_encomenda_servico_path);
 		exit();
 	}
 }
