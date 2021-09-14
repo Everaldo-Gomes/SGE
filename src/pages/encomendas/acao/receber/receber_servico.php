@@ -7,13 +7,17 @@ include_once "../../../../routers.php";
 $database = new Database();
 $db = $database->getConnection();
 
-$receber_obj = new funcoes_gerais($db);
+$obter_obj = new funcoes_gerais($db);
 $encomenda_info = array();
 
 /* busca info sobre a encomenda clicada */
 session_start();	
-$params = "id = {$_SESSION['encomenda_id']}";
-$_SESSION['encomenda_info'] = $receber_obj->lerRegistrosJoin('encomenda', 'morador', 'id', $params);
+
+
+$_SESSION['encomenda_info'] = $obter_obj->lerRegistros("encomenda", "WHERE id = {$_SESSION['encomenda_id']}");
+$_SESSION['destinatario_info'] = $obter_obj->lerRegistros("morador", "WHERE id = {$_SESSION['encomenda_info'][2]}");
+$_SESSION['entregador_info'] = $obter_obj->lerRegistros("morador", "WHERE id = {$_SESSION['encomenda_info'][3]}");
+
 
 unset($_SESSION['encomenda_id']);
 

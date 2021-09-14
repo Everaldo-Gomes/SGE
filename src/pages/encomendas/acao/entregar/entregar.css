@@ -10,6 +10,7 @@
 	border: 1px solid orange;
 	border-radius: 5px;
 }
+
 .encomenda_box {
 	width: 40%;
 	min-width: 40%;
@@ -24,10 +25,31 @@
 	border-color: orange;
 	border-radius: 15px;
 	background-color: rgba(10, 10, 10, 1);
+	float: left;
 }
 
 .e_info {
 	position: relative;
 	text-align: center;
 	margin: 10px 0px 0px 10px;
+}
+
+.btns {
+	position: relative;
+	float: right;
+	width: 550px;
+	height: 300px;
+	min-height: 50px;
+	margin: 80px 0px 0px 0px;
+}
+
+.btns button[type=submit] {
+	position: relative;
+	padding: 40px 150px 40px 150px;
+	margin-top: 50px;
+	cursor: pointer;
+	font-family: Arial;
+	font-size: 30px;
+	text-align: right;
+	border-radius: 15px;
 }

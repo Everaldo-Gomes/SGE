@@ -5,7 +5,6 @@ include("../../../../routers.php");
 include("../../../../template/top.php");
 
 session_start();
-//o array $_SESSION['encomenda_info'] tem todas as info sobre a encomenda que foram obtidas quando foi clicado na encomenda 
 ?>
 
 <head><link rel="stylesheet" href="./receber.css"></head>
@@ -18,6 +17,10 @@ session_start();
 			<div class="e_info">
 				Nome </br>
 				<?php echo $_SESSION['encomenda_info'][1]; ?>
+			</div></br>
+			<div class="e_info">
+				Endereço de Entrega </br>
+				<?php echo $_SESSION['destinatario_info'][4]; ?>
 			</div></br>
 			<div class="e_info">
 				Data Entrega </br>
@@ -35,22 +38,22 @@ session_start();
 		
 		<!-- O CASO EM QUE NENHUM ENTREGADOR SE OFERECEU PARA ENTREGAR SUA ENCOMENDA-->
 		<?php
-		$id_logado = 1; /* MUDAR  para  a pessoa logada */
+		$id_logado = 2; /* MUDAR  para  a pessoa logada */
 
 		if ($id_logado != $_SESSION['encomenda_info'][2]) {
 
 			echo "
             <div class='e_info'> 
 			    Nome </br> 
-                {$_SESSION['encomenda_info'][9]} 
+                {$_SESSION['entregador_info'][1]} 
             </div></br>
 			<div class='e_info'> 
    			    Telefone </br> 
-                {$_SESSION['encomenda_info'][11]} 
+                {$_SESSION['entregador_info'][3]} 
             </div></br>
 			<div class='e_info'> 
                 Endereço </br> 
-                {$_SESSION['encomenda_info'][12]} 
+                {$_SESSION['entregador_info'][4]} 
             </div></br>
 			";
 		}
@@ -63,4 +66,4 @@ session_start();
 
 
 <script src="./receber.js"></script>
-<?php include("../../../../template/bottom.php"); unset($_SESSION['encomenda_info']);?>
+<?php include("../../../../template/bottom.php"); unset($_SESSION['encomenda_info']); unset($_SESSION['entregador_info']); unset($_SESSION['destinatario_info']);?>

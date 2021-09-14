@@ -17,11 +17,15 @@ session_start();
 		<label>
 			<div class="e_info">
 				Destinatário </br>
-				<?php echo $_SESSION['encomenda_info'][0]; ?>
+				<?php echo $_SESSION['destinatario_info'][1]; ?>
+			</div></br>
+			<div class="e_info">
+				Telefone </br>
+				<?php echo $_SESSION['destinatario_info'][3]; ?>
 			</div></br>
 			<div class="e_info">
 				Endereço </br>
-				<?php echo $_SESSION['encomenda_info'][12]; ?>
+				<?php echo $_SESSION['destinatario_info'][4]; ?>
 			</div></br>
 			<div class="e_info">
 				Encomenda </br>
@@ -33,10 +37,23 @@ session_start();
 			</div></br>
 		</label>
 	</div>
+	<div class="btns">
+		<form action="entregar_servico.php" method="POST">
+			<button type='submit' class='encomenda btn btn-success' name='btn_acao_entregar' value='0'>Entregar</button>
+			<button type='submit' class='encomenda btn btn-danger' name='btn_acao_cancelar' value='1'>Cancelar</button>
+		</form>
+	</div>
 </div>
 
-<?php
 
+<script src="./entregar.js"></script>
+<?php include("../../../../template/bottom.php"); unset($_SESSION['encomenda_info']); unset($_SESSION['destinatario_info']);?>
+
+
+
+
+
+<?php
 //------------------------------------- IMPORTANTE ------------------------------------
 
 // código abaixo foi removido, porque o que foi posto aqui não é o propósito da página
@@ -101,7 +118,3 @@ session_start();
      </div>
 	 </html>
    ---------------------------------------------------------------------------------->
-
-
-<script src="./entregar.js"></script>
-<?php include("../../../../template/bottom.php"); unset($_SESSION['encomenda_info']);?>

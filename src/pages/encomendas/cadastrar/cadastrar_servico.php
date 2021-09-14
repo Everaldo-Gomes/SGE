@@ -26,7 +26,7 @@ if (!$apenas_branco) {
 	$encomenda = new funcoes_gerais($db);
 
 	//URGENTE !!!! PRECISA MUDAR. é necessário pegar o morador que vai está logado
-	$morador_logado_id = 1; 
+	$morador_logado_id = 2; 
 	//-------------------------------------------------------
 
 	/* editando */
@@ -49,8 +49,8 @@ if (!$apenas_branco) {
 	
 	/* cadastrando 
 	   por padrão quando uma encomenda é cadastrada o ID do morador que vai entregar vai ser o próprio morador que está cadastrando */
-	$fields = 'nome, cadastrada_morador_id, entregador_id, data_cadastro, previsao_data_entrega, foi_entregue, excluido';
-	$arrayDados = array($encomenda_nome, $morador_logado_id, $morador_logado_id, date("Y-m-d H:i:s"), $previsao_entrega, 0, 0); //0 é o campo "foi_entregue e excluida"
+	$fields = 'nome, cadastrada_morador_id, entregador_id, data_cadastro, previsao_data_entrega, foi_entregue, entregador_pegou, excluido';
+	$arrayDados = array($encomenda_nome, $morador_logado_id, $morador_logado_id, date("Y-m-d H:i:s"), $previsao_entrega, 0, 0, 0); //0 é o campo "foi_entregue, entregador_pegou e excluida"
 	
 	$encomenda->gravarArrayNoBanco('encomenda', $fields, $arrayDados);
 

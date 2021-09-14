@@ -7,7 +7,7 @@ include("./database/funcoes_gerais.php");
 function carrega_itens($condicao, $acao) {
 
 	$id_logado = 1; //URGENTE, tem que mudar para o usuário logado
-	$params = "WHERE cadastrada_morador_id {$condicao} {$id_logado} AND foi_entregue = 0 AND excluido = 0 ORDER BY previsao_data_entrega ASC";
+	$params = "WHERE cadastrada_morador_id {$condicao} {$id_logado} AND foi_entregue = 0 AND entregador_pegou = 0 AND excluido = 0 ORDER BY previsao_data_entrega ASC";
 	echo carrega_info($params, $acao);	
 }
 

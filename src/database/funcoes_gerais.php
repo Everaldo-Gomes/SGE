@@ -37,46 +37,6 @@ class Funcoes_gerais {
 	}
 
 
-	//mesma função da "lerRegistros", só que essa usa o JOIN, para buscar info em mais uma tabela
-	public function lerRegistrosJoin($tabela1, $tabela2, $comparacao, $params = NULL) {
-
-		/* 
-		   
-		   Fazendo umas mudanças aqui...
-		   
-		   encomenda id -> encomenda info -> cadastrada_pelo_morador_id -> morador_info
-		   encomenda id -> encomenda info -> entregador_id -> morador_info (entregador)
-
-		   SELECT t1.nome, t1.data_cadastro, t1.previsao_data_entrega, t1.foi_entregue FROM {tabela1} t1 
-		   JOIN {tabela2} t2 ON t2.id = t1.cadastrada_morador_id WHERE t1.id = 1 
-		   
-		   UNION 
-		   
-		   SELECT t2.nome, t2.cpf, t2.telefone, t2.endereco FROM {tabela1} t1 
-		   JOIN {tabela2} t2 ON t2.id = t1.cadastrada_morador_id WHERE t2.id = 2;
-
-		 */
-		
-		$params = $params === NULL ? NULL : "WHERE t1.{$params}";
-		$query = "SELECT t1.*, t2.* FROM {$tabela1} t1 JOIN {$tabela2} t2 ON t2.{$comparacao} = t1.{$comparacao} $params";
-		$result = $this->conn->query($query);
-		$data = array();
-		
-		if($result->rowCount() == 0) {
-			return false;
-		}
-		else {
-			foreach($result as $res) { 
-				array_merge($data, $res);
-				$data = &$res;
-			}
-		}
-		
-		return $data;
-	}
-
-	
-
     // não sei onde estava sendo usado o metodo de cima, então fiz um um pouco diferente ao inves de mudar aquele
     //não encontrei um jeito de colocar tddentro de um array com o nome do valor, só com o numero.
     //dentro do "for ($i=0; $i < sizeof($res); $i++)" ali tem o array com os nomes e com os numeros, mas n consegui manipular com os nomes :/
@@ -135,6 +95,11 @@ class Funcoes_gerais {
 		return $this->conn->query($query);
 	}
 
+	public function alteraRegistroGeral($query) {
+
+		return $this->conn->query($query);
+	}
+	
 	// deletar registros. não vai deletar, apenas marcar que não pode ser exibido / procurado
 	public function deletarRegistro($nomeTabela, $where = null) {
 		
