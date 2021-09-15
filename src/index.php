@@ -3,10 +3,14 @@ $title = 'SGC - Home';
 include("./template/top.php");
 include("../../routers.php");
 include('./index_servico.php');
+
+session_start();
 ?>
 
 <link rel="stylesheet" href="/SGE/src/public/css/index.css">
 
+<div id="entregar_status"></div>
+	
 <div class="container_info">
 	<aside class="encomenda_entregar">	
 		<p id="titulo_entregar">Disponíveis para a entrega</p>
@@ -18,4 +22,6 @@ include('./index_servico.php');
 	</aside>
 </div>
 
-<?php include("./template/bottom.php"); ?>
+<input id="encomenda_status_id" type='text' readonly value="<?php echo $_SESSION['op_status'];?>">
+<script src="./public/js/index.js"></script>
+<?php include("./template/bottom.php"); unset($_SESSION['op_status']);?>

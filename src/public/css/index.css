@@ -56,4 +56,42 @@
 .encomenda_box_descricao {
 	display: flex;
 	flex-direction: column;
-} 
+}
+
+#encomenda_status_id {
+	display: none;
+}
+
+.cadastro_ok {
+	position: relative;
+	float: center;
+	overflow: hidden;
+	font-family: Arial;
+	font-size: 19px;
+	color: white;
+	font-weight: bold;
+	padding: 0px 0px 0px 3%;
+	border-radius: 39px;
+}
+
+.cadastro_ok {
+	background-color: green;
+	width: 300px;
+	margin: 10px 10px 10px 43%;
+	opacity: 0;
+	animation-name: cadastro_encomenda_ok;
+	animation-duration: 2s;
+}
+
+@keyframes cadastro_encomenda_ok {
+	
+	0% {
+		opacity: 1;
+		margin: -1% 10px 10px 43%;
+	}
+	100%  {
+		opacity: 1;
+		margin: 1% 10px 10px 43%;
+	}
+}
+

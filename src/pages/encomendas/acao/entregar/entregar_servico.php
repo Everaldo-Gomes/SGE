@@ -25,7 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$entregar_obj->alteraRegistroGeral("UPDATE encomenda set entregador_pegou = 1 WHERE id = {$_SESSION['encomenda_id']}");
 
 		// confirmação front e back FALTA FAZER 
-
+		$_SESSION['op_status'] = 1;
+		
 		/* volta para o inicio */
 		header("Location: " . $index_path);
 		exit();

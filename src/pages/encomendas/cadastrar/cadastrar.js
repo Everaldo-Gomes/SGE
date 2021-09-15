@@ -1,8 +1,8 @@
 'use strict'
 
-function confirm_submit() {
-	confirm("Tem certeza ?");
-	//var nome = document.forms["Form"]["encomenda_nome_field"].value;
+function confirm_submit(form) {
+
+	
 }
 
 // cadastrando

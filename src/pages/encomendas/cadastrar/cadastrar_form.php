@@ -18,7 +18,7 @@ include("../../../template/top.php");
 				   min="<?php echo date("Y-m-d");?>" required>
 		</div>	
 		<div class="links_btn">
-			<input class="btn btn-primary" type="submit" value="Cadastrar encomenda" onclick="confirm_submit()" id="btn_cadastra_edita_id"
+			<input class="btn btn-primary" type="submit" value="Cadastrar encomenda" onclick=" return confirm_submi()" id="btn_cadastra_edita_id"
 			name="btn_cadastra_edita_nome">
 		</div>
 	</form>
