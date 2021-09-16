@@ -2,6 +2,7 @@
 $title = 'SGC - Morador';
 include("../../../routers.php");
 include("../../../template/top.php");
+session_start(); 
 ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -30,6 +31,10 @@ include("../../../template/top.php");
 			<input id="endereco_id" type="text" name="endereco_field" size="55" maxlength="30" placeholder="Endereço"
 				   onkeypress="return /[a-z' ']/i.test(event.key)">
 		</div>
+		<div class="morador_password">
+			<input id="password_id" type="password" name="password_field" size="55" maxlength="8" placeholder="Senha" value=" " required
+				   onkeypress="return /[a-z0-9]/i.test(event.key)">
+		</div>
 		<div class="morador_recebe_encomenda">
 			<input type="checkbox" id="recebe_encomenda_id" name="recebe_encomenda_nome">
 			<label for="recebe_encomenda">Recebe Encomenda ?</label>
@@ -42,11 +47,12 @@ include("../../../template/top.php");
 	</form>
 </div>
 
-<input id="aux_nome"     type='text' name='aux_field' readonly value="<?php session_start(); echo $_SESSION['field_info'][1];?>">
+<input id="aux_nome"     type='text' name='aux_field' readonly value="<?php echo $_SESSION['field_info'][1];?>">
 <input id="aux_cpf"      type='text' name='aux_field' readonly value="<?php echo $_SESSION['field_info'][2];?>">
 <input id="aux_phone"    type='text' name='aux_field' readonly value="<?php echo $_SESSION['field_info'][3];?>">
 <input id="aux_endereco" type='text' name='aux_field' readonly value="<?php echo $_SESSION['field_info'][4];?>">
 <input id="aux_recebe"   type='text' name='aux_field' readonly value="<?php echo $_SESSION['field_info'][5];?>">
+<input id="aux_password" type='text' name='aux_field' readonly value="<?php echo $_SESSION['field_info'][7];?>">
 <input id="recebedor_id" type='text' name='recebedor_id_field' readonly value="<?php echo $_SESSION['recebedor_id'];?>">
 
 <script>

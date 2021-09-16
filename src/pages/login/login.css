@@ -1,0 +1,51 @@
+.forms {
+	width: 550px;
+	height: 320px;
+	margin: 4% 50px 0px 33%;
+	padding: 50px;
+	background-color: rgba(20,20,20,1);
+	border-radius: 30px;
+}
+
+.forms input[type="text"], input[type="password"] {
+	width: 450px;
+	margin: 10px 0px 0px 10px;
+	padding: 10px 0px;
+	line-height: 17px;
+	font-size: 15px;
+	border-radius: 30px;
+	text-align: center;
+}
+
+.forms
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+	text-align: center;
+}
+
+label {
+	font-family: Arial;
+	font-size: 15px;
+	font-weight: bold;
+	margin: 10px 0px 0px 20px;
+}
+
+label a {
+	color: white;
+}
+
+label a:hover {
+	color: orange;
+	text-decoration: none;
+}
+
+.forms input[type="submit"] {
+	position: relative;
+	overflow: hidden;
+	font-family: Arial;
+	font-size: 15px;
+	font-weight: bold;
+	margin: 10% 0px 0px 37%;
+	padding: 15px 40px;
+	border-radius: 20px;
+}

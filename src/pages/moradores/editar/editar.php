@@ -17,6 +17,7 @@ $cpf      = $_POST['cpf_field'];
 $telefone = $_POST['telefone_field'];
 $endereco = $_POST['endereco_field'];
 $recebedor_id = $_POST['btn_get_id'];
+$senha = $_POST['password_field'];
 
 $recebe_encomenda = 0;
 
@@ -25,7 +26,7 @@ if(isset($_POST['recebe_encomenda_nome'])) {
 	$recebe_encomenda = 1;
 }
 
-$arrayDados = array($nome, $cpf, $telefone, $endereco);
+$arrayDados = array($nome, $cpf, $telefone, $endereco, $senha);
 
 /* verifica qual foi botão foi pressionado  */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -42,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			/* salva info para poder liberar e preencher os outros campos */
 			session_start();
 			$_SESSION['field_info'] = $arrayResultado;
-			
+            
 			/* redireciona para  a mesma pagina */
 			header("Location: " . $editar_morador_path);
 			exit();
@@ -55,13 +56,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 	else if (isset($_POST['btn_edita_morador'])) { 
 
-		if ($nome !== " " || $cpf !== " ") {
+		if ($nome !== " " || $cpf !== " " || $senha !== " ") {
 			
 			/* se cpf não tiver cadastrado, cadastra o novo morador */
 			//if ($arrayResultado[2] != $cpf) {
 
-			$dados = array($nome, $cpf, $telefone, $endereco);
-			$fields = array ('nome', 'cpf', 'telefone', 'endereco');
+			$dados = array($nome, $cpf, $telefone, $endereco, $senha);
+			$fields = array ('nome', 'cpf', 'telefone', 'endereco', 'senha');
 			$where = "id = {$arrayResultado[0]}";
 			$morador->alterarRegistro('morador', $fields, $dados, $where);
 			
@@ -78,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		}
 		
 		/* redireciona para  a mesma pagina */
-		header("Location: " . $editar_morador_path);
+        header("Location: " . $editar_morador_path);
 		exit();	
     }
 

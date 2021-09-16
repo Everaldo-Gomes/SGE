@@ -3,6 +3,15 @@ CREATE database sge;
 
 connect sge;
 
+CREATE TABLE imobiliaria (
+
+	id INT NOT NULL AUTO_INCREMENT,	
+	nome VARCHAR(50) NOT NULL,
+	cpf VARCHAR(14) NOT NULL UNIQUE,
+	senha VARCHAR(8) NOT NULL,
+	PRIMARY KEY (id)	
+);
+	
 CREATE TABLE morador (
 	
 	id INT NOT NULL AUTO_INCREMENT,	
@@ -12,6 +21,7 @@ CREATE TABLE morador (
 	endereco VARCHAR(100),
 	recebe INT NOT NULL,
 	excluido INT NOT NULL,
+	senha VARCHAR(8) NOT NULL,
 	PRIMARY KEY (id)	
 );
 

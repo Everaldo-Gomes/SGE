@@ -30,6 +30,10 @@ include("../../../template/top.php");
 			<input type="text" name="endereco_field" size="55" maxlength="30" placeholder="Endereço"
 				   onkeypress="return /[a-z]/i.test(event.key)">
 		</div>
+           <div class="morador_password">
+			<input id="nome_id" type="password" name="password_field" size="55" maxlength="8" placeholder="Senha" required
+				   onkeypress="return /[a-z0-9]/i.test(event.key)">
+		</div>
 		<div>
 			<input type="checkbox" id="recebe_encomenda_id" name="recebe_encomenda_nome">
 			<label for="recebe_encomenda">Recebe Encomenda ?</label>

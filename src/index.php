@@ -5,6 +5,13 @@ include("../../routers.php");
 include('./index_servico.php');
 
 session_start();
+
+// verifica se o usuário está logado, se não tiver redireciona para a página de login
+if (!isset($_SESSION['morador_logado'])) {
+
+    header("Location: " . $login_form_path);
+    exit();
+}
 ?>
 
 <link rel="stylesheet" href="/SGE/src/public/css/index.css">

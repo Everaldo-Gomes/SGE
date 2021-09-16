@@ -20,6 +20,7 @@ $editar_encomenda_path = "/SGE/src/pages/encomendas/editar/editar_form.php";
 $listar_morador_path = "/SGE/src/pages/moradores/listar/lista.php";
 $entregar_encomenda_path = "/SGE/src/pages/encomendas/acao/entregar/entregar_form.php";
 $receber_encomenda_path = "/SGE/src/pages/encomendas/acao/receber/receber_form.php";
+$login_form_path = "/SGE/src/pages/login/login_form.php";
 
 
 /* páginas serviços */
@@ -31,5 +32,6 @@ $entregar_encomenda_servico_path = "/SGE/src/pages/encomendas/acao/entregar/entr
 
 /* imagens */
 $logo_img_path = "/SGE/src/public/img/SGE_logo.svg";
+
 
 ?>

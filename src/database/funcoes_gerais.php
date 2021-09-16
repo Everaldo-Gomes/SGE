@@ -19,7 +19,7 @@ class Funcoes_gerais {
 
 	// ler registros e retorna os dados daquele que for encontrado (registros de uma ÚNICA tabela)
     public function lerRegistros($nomeTabela, $parametros = null, $fields = '*') {
-		
+
         $query = "SELECT {$fields} FROM {$nomeTabela} {$parametros}";
         $result = $this->conn->query($query);
 		$data = array();
@@ -33,6 +33,7 @@ class Funcoes_gerais {
 				$data = &$res;
 			}
 		}
+
 		return $data;
 	}
 
@@ -91,7 +92,9 @@ class Funcoes_gerais {
 		$values = "'".implode("', '", $dados)."'";
 		$where = ($where) ? " WHERE {$where}" : null;
 		$query = "UPDATE {$nomeTabela} SET {$fields[0]} = '{$dados[0]}', {$fields[1]} = '{$dados[1]}', 
-                                           {$fields[2]} = '{$dados[2]}', {$fields[3]} = '{$dados[3]}' {$where}";
+                                           {$fields[2]} = '{$dados[2]}', {$fields[3]} = '{$dados[3]}',
+                                           {$fields[4]} = '{$dados[4]}' {$where}";
+        echo $query;
 		return $this->conn->query($query);
 	}
 

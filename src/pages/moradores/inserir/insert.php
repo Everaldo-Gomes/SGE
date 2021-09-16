@@ -13,6 +13,7 @@ $nome = $_POST['nome_field'];
 $cpf = $_POST['cpf_field'];
 $telefone = $_POST['telefone_field'];
 $endereco = $_POST['endereco_field'];
+$senha = $_POST['password_field'];
 $recebe_encomenda = 0;
 
 /* verifica se o checkbox está marcado */
@@ -20,7 +21,7 @@ if(isset($_POST['recebe_encomenda_nome'])) {
 	$recebe_encomenda = 1;
 }
 
-$arrayDados = array($nome, $cpf, $telefone, $endereco, $recebe_encomenda, 0); //0 é o campo excluido
+$arrayDados = array($nome, $cpf, $telefone, $endereco, $recebe_encomenda, 0, $senha); //0 é o campo excluido
 
 if ($nome !== " " || $cpf !== " ") {
 
@@ -31,7 +32,7 @@ if ($nome !== " " || $cpf !== " ") {
 	/* se cpf não tiver cadastrado, cadastra o novo morador */
 	if ($arrayResultado[2] != $cpf) {
 		
-		$fields = 'nome, cpf, telefone, endereco, recebe, excluido';
+		$fields = 'nome, cpf, telefone, endereco, recebe, excluido, senha';
 		$morador->gravarArrayNoBanco('morador', $fields, $arrayDados);
 
 		sleep(1.5);
