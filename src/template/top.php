@@ -21,8 +21,23 @@
 				<div class="logo_img">
 					<img src="<?php echo $logo_img_path; ?>" alt="logo " id="logo_img_container">
 				</div>
+				<?php 
+				session_start();
+				
+				// verifica se o usuário está logado para mostrar o logout ,
+				if (isset($_SESSION['morador_logado'])) {						
+					echo "
+                        <div class='logout'>
+                        <span>Bem vindo, </span>
+                        <label> {$_SESSION['morador_logado'][1]}</label></br>
+	    				<a href='{$logout_servico_path}'>Sair</a>
+                        </div>
+					";
+				}
+				?>
 				<div class="slogan">
 					<h3 id="slogan">Sem se preocupar, sua encomenda vai chegar</h3>
+				</div>
 				</div>
 				<div class="menuItem">
 					<div class="dropdown">

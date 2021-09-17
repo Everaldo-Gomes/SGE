@@ -1,10 +1,19 @@
 .forms {
 	width: 550px;
-	height: 320px;
+	height: 370px;
 	margin: 4% 50px 0px 33%;
 	padding: 50px;
 	background-color: rgba(20,20,20,1);
 	border-radius: 30px;
+}
+
+.forms .login_text {
+	font-family: Arial;
+	font-size: 30px;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+	margin: -20px 0px 20px 0px;
 }
 
 .forms input[type="text"], input[type="password"] {
@@ -32,11 +41,11 @@ label {
 
 label a {
 	color: white;
+	text-decoration: none;
 }
 
 label a:hover {
 	color: orange;
-	text-decoration: none;
 }
 
 .forms input[type="submit"] {
@@ -48,4 +57,35 @@ label a:hover {
 	margin: 10% 0px 0px 37%;
 	padding: 15px 40px;
 	border-radius: 20px;
+}
+
+.login_erro {
+	background-color: red;
+	width: 380px;
+	color: white;
+	font-family: Arial;
+	font-size: 26px;
+	font-weight: bold;
+	text-align: center;
+	margin: 10px 10px 10px 39%;
+	border-radius: 20px;
+	animation-name: cadastro_encomenda_error;
+	animation-duration: 2s;
+}
+
+
+@keyframes cadastro_encomenda_error {
+	
+	0% {
+		opacity: 1;
+		margin: -1% 10px 10px 39%;
+	}
+	100%  {
+		opacity: 1;
+		margin: 1% 10px 10px 39%;
+	}
+}
+
+#login_status_id {
+	display: none;
 }
