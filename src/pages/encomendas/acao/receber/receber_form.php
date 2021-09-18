@@ -38,9 +38,10 @@ session_start();
 		
 		<!-- O CASO EM QUE NENHUM ENTREGADOR SE OFERECEU PARA ENTREGAR SUA ENCOMENDA-->
 		<?php
-		$id_logado = 2; /* MUDAR  para  a pessoa logada */
 
-		if ($id_logado != $_SESSION['encomenda_info'][2]) {
+		$id_logado = $_SESSION['morador_logado'][0]; 
+
+		if ($id_logado != $_SESSION['encomenda_info'][3]) {
 
 			echo "
             <div class='e_info'> 

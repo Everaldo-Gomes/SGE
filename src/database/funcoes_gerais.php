@@ -33,7 +33,7 @@ class Funcoes_gerais {
 				$data = &$res;
 			}
 		}
-
+        
 		return $data;
 	}
 
@@ -85,7 +85,6 @@ class Funcoes_gerais {
         return($parametros);
     }
 
-	// alterar registro
 	// alterar registro Aplicada aos moradores
 	public function alterarRegistro($nomeTabela, array $fields, array $dados, $where = null) {
 
@@ -93,8 +92,10 @@ class Funcoes_gerais {
 		$where = ($where) ? " WHERE {$where}" : null;
 		$query = "UPDATE {$nomeTabela} SET {$fields[0]} = '{$dados[0]}', {$fields[1]} = '{$dados[1]}', 
                                            {$fields[2]} = '{$dados[2]}', {$fields[3]} = '{$dados[3]}',
-                                           {$fields[4]} = '{$dados[4]}' {$where}";
-        echo $query;
+                                           {$fields[4]} = {$dados[4]}, {$fields[5]} = {$dados[5]}, 
+                                           {$fields[6]} = '{$dados[6]}' {$where}";
+        echo "</br>" . $query ."</br>";
+
 		return $this->conn->query($query);
 	}
 

@@ -2,7 +2,7 @@ body {
 	//background-color: rgba(0, 0, 0, 0.1);
 }
 
-#aux_field, #aux_nome, #aux_cpf, #aux_phone, #aux_endereco, #aux_recebe, #aux_password, #recebedor_id {
+#aux_field, #aux_nome, #aux_cpf, #aux_phone, #aux_endereco, #aux_recebe, #aux_password, #recebedor_id, #morador_status_id {
 	display: none;
 }
 
@@ -37,7 +37,7 @@ body {
 label {
 	color: white;
 	font-family: Arial;
-	font-size: 15px;
+	font-size: 20px;
 	font-weight: bold;
 	margin: 10px 0px 0px 10px;
 }
@@ -53,49 +53,55 @@ label {
 	border-radius: 20px;
 }
 
-.editar_morador {
-	width: 200px;
-	height: 40px;
-}
-
-.hidden {
-	width: 200px;
-	height: 40px;
+.cadastro_ok, .cadastro_error {
 	position: relative;
-	background-color: blue;
+	float: center;
+	overflow: hidden;
 	font-family: Arial;
-	font-size: 15px;
-	font-weight: bold;
+	font-size: 19px;
 	color: white;
-	margin: 0% 0px 0px 55%;
-	padding-top: 10px;
-	display: inline-block;
-	border-radius: 10px;
-	text-align: center;
-	animation-name: aditar_morador_efeito;
-	animation-duration: 4s;
-	opacity: 0;
+	font-weight: bold;
+	padding: 0px 0px 0px 3%;
+	border-radius: 39px;
 }
 
-.edited {
+.cadastro_ok {
+	background-color: green;
+	width: 300px;
+	margin: 10px 10px 10px 41%;
 	opacity: 0;
+	animation-name: cadastro_encomenda_ok;
+	animation-duration: 2s;
 }
 
-@keyframes aditar_morador_efeito {
+.cadastro_error {
+	background-color: red;
+	width: 380px;
+	margin: 10px 10px 10px 39%;
+	animation-name: cadastro_encomenda_error;
+	animation-duration: 2s;
+}
+
+@keyframes cadastro_encomenda_ok {
 	
 	0% {
 		opacity: 1;
-		margin: 0% 0px 0px 53%;
-	}
-	50%  {
-		opacity: 1;
-		margin: 0% 0px 0px 55%;
+		margin: -1% 10px 10px 41%;
 	}
 	100%  {
-		opacity: 0;
-		margin: 0% 0px 0px 55%;
+		opacity: 1;
+		margin: 1% 10px 10px 41%;
 	}
 }
 
-
-
+@keyframes cadastro_encomenda_error {
+	
+	0% {
+		opacity: 1;
+		margin: -1% 10px 10px 39%;
+	}
+	100%  {
+		opacity: 1;
+		margin: 1% 10px 10px 39%;
+	}
+}

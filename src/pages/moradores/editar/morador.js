@@ -1,7 +1,37 @@
 "use strict"
 
-// quando abrir essa tela os campos vão está configurado da seguinte forma:
+// mensagem de sucesso ou erro ao editar / exclir morador
+let cadastro_status = document.getElementById('morador_status_id').value;
 
+if (cadastro_status == 1) {
+	document.getElementById("morador_edita_exclui").innerHTML = "Morador editado";
+	document.getElementById("morador_edita_exclui").classList.add("cadastro_ok");
+}
+else if (cadastro_status == 2) {
+	document.getElementById("morador_edita_exclui").innerHTML = "Morador excluido";
+	document.getElementById("morador_edita_exclui").classList.add("cadastro_ok");
+}
+else if (cadastro_status == 3) {
+	document.getElementById("morador_edita_exclui").innerHTML = "CPF não encontrado";
+	document.getElementById("morador_edita_exclui").classList.add("cadastro_error");
+}
+else if (cadastro_status == -1) {
+	document.getElementById("morador_edita_exclui").innerHTML = "Erro. acão não foi executada";
+	document.getElementById("morador_edita_exclui").classList.add("cadastro_error");
+}
+
+// remove mensagem de erro quando digita
+let cpf_campo = document.getElementById('cpf_id');
+cpf_campo.addEventListener('input', escode_msg_erro);
+
+function escode_msg_erro() {
+	
+	document.getElementById("morador_edita_exclui").innerHTML = "";
+	document.getElementById("morador_edita_exclui").classList.remove("cadastro_error");
+}
+
+
+// quando abrir essa tela os campos vão está configurado da seguinte forma:
 // div forms
 document.querySelector('.forms').style.height = "270px";
 

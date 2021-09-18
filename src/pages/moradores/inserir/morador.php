@@ -7,11 +7,8 @@ include("../../../template/top.php");
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="<?php echo $bootstrap_css_path ?>">
 <link rel="stylesheet" href="./morador.css">
-
-<div class="add_morador added">
-	<p>Morador Adicionado !</p>
-</div>
-
+           
+<div id="morador_cadastrado"></div>
 <div class="forms">
 	<form action="insert.php" method="POST" name="Form">	
 		<div class="morador_nome">
@@ -45,5 +42,6 @@ include("../../../template/top.php");
 </button>
 </div>
 
+<input id="morador_status_id" type='text' readonly value="<?php session_start(); echo $_SESSION['morador_status'];?>">
 <script src="./morador.js"></script>
-<?php include("../../../template/bottom.php"); ?>
+<?php include("../../../template/bottom.php"); unset($_SESSION['morador_status']);?>

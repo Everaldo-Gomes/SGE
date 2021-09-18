@@ -1,10 +1,5 @@
 'use strict'
 
-function confirm_submit(form) {
-
-	
-}
-
 // cadastrando
 // mensagem de sucesso ou erro ou cadastrar encomenda
 let cadastro_status = document.getElementById('encomenda_id').value;

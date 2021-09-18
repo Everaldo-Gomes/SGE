@@ -56,7 +56,6 @@ if (!$apenas_branco) {
 	$encomenda->gravarArrayNoBanco('encomenda', $fields, $arrayDados);
 
 	/* aviso que encomenda foi cadastrada */
-	session_start();
 	$_SESSION['encomenda_status'] = 1;
 	
 	/* retorna o id da encomenda cadastrada APENAS pora este morado 
@@ -71,7 +70,6 @@ if (!$apenas_branco) {
 else {
 	
 	/* aviso que encomenda não foi cadastrada */
-	session_start();
 	$_SESSION['encomenda_status'] = -1;
 
 	header("Location: " . $cadastrar_encomenda_path);

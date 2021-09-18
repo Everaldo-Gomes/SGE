@@ -28,7 +28,7 @@
 				if (isset($_SESSION['morador_logado'])) {						
 					echo "
                         <div class='logout'>
-                        <span>Bem vindo, </span>
+                        <span>Bem vindo(a), </span>
                         <label> {$_SESSION['morador_logado'][1]}</label></br>
 	    				<a href='{$logout_servico_path}'>Sair</a>
                         </div>

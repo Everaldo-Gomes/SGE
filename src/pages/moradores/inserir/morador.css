@@ -53,46 +53,59 @@ input {
 	border-radius: 20px;
 }
 
-.add_morador {
-	width: 200px;
-	height: 40px;
-}
-
-.hidden {
-	width: 200px;
-	height: 40px;
+.cadastro_ok, .cadastro_error {
 	position: relative;
-	background-color: blue;
+	float: center;
+	overflow: hidden;
 	font-family: Arial;
-	font-size: 15px;
-	font-weight: bold;
+	font-size: 19px;
 	color: white;
-	margin: 0% 0px 0px 55%;
-	padding-top: 10px;
-	display: inline-block;
-	border-radius: 10px;
-	text-align: center;
-	animation-name: add_morador_efeito;
-	animation-duration: 5s;
-	opacity: 0;
+	font-weight: bold;
+	padding: 0px 0px 0px 3%;
+	border-radius: 39px;
 }
 
-.added {
+.cadastro_ok {
+	background-color: green;
+	width: 300px;
+	margin: 10px 10px 10px 41%;
 	opacity: 0;
+	animation-name: cadastro_encomenda_ok;
+	animation-duration: 2s;
 }
 
-@keyframes add_morador_efeito {
+.cadastro_error {
+	background-color: red;
+	width: 380px;
+	margin: 10px 10px 10px 39%;
+	animation-name: cadastro_encomenda_error;
+	animation-duration: 2s;
+}
+
+@keyframes cadastro_encomenda_ok {
 	
 	0% {
 		opacity: 1;
-		margin: 0% 0px 0px 53%;
-	}
-	50%  {
-		opacity: 1;
-		margin: 0% 0px 0px 55%;
+		margin: -1% 10px 10px 41%;
 	}
 	100%  {
-		opacity: 0;
-		margin: 0% 0px 0px 55%;
+		opacity: 1;
+		margin: 1% 10px 10px 41%;
 	}
+}
+
+@keyframes cadastro_encomenda_error {
+	
+	0% {
+		opacity: 1;
+		margin: -1% 10px 10px 39%;
+	}
+	100%  {
+		opacity: 1;
+		margin: 1% 10px 10px 39%;
+	}
+}
+
+#morador_status_id {
+	display: none;
 }

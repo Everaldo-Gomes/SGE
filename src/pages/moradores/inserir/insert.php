@@ -25,6 +25,7 @@ $arrayDados = array($nome, $cpf, $telefone, $endereco, $recebe_encomenda, 0, $se
 
 if ($nome !== " " || $cpf !== " ") {
 
+    session_start();
 	$morador = new Funcoes_gerais($db);
 	$parametros = "WHERE cpf = '{$cpf}'";
 	$arrayResultado = $morador->lerRegistros('morador', $parametros, '*');
@@ -35,15 +36,14 @@ if ($nome !== " " || $cpf !== " ") {
 		$fields = 'nome, cpf, telefone, endereco, recebe, excluido, senha';
 		$morador->gravarArrayNoBanco('morador', $fields, $arrayDados);
 
-		sleep(1.5);
-		
-		/* redireciona para  a mesma pagina */
-		header("Location: " . $cadastrar_morador_path);
-	exit();
+        $_SESSION['morador_status'] = 1;
 	}
 	else {
-		/* Falta colocar esse aviso no front */
-		echo 'já cadastrado';
+        $_SESSION['morador_status'] = -1;
 	}
+
+    /* redireciona para  a mesma pagina */
+    header("Location: " . $cadastrar_morador_path);
+    exit();
 }
 ?>

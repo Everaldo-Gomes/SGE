@@ -76,22 +76,22 @@
 
 .cadastro_ok {
 	background-color: green;
-	width: 300px;
-	margin: 10px 10px 10px 43%;
+	width: 500px;
+	margin: 10px 10px 10px 23%;
 	opacity: 0;
 	animation-name: cadastro_encomenda_ok;
-	animation-duration: 2s;
+	animation-duration: 3s;
 }
 
 @keyframes cadastro_encomenda_ok {
 	
 	0% {
 		opacity: 1;
-		margin: -1% 10px 10px 43%;
+		margin: -1% 10px 10px 33%;
 	}
 	100%  {
 		opacity: 1;
-		margin: 1% 10px 10px 43%;
+		margin: 1% 10px 10px 33%;
 	}
 }
 

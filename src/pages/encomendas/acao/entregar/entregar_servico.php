@@ -26,17 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 		// confirmação front e back FALTA FAZER 
 		$_SESSION['op_status'] = 1;
-		
-		/* volta para o inicio */
-		header("Location: " . $index_path);
-		exit();
 	}
-	else { //btn_acao_cancelar
 
-		/* apenas redireciona para a página inicial */
-		header("Location: " . $index_path);
-		exit();
-	}
+    /* volta para o inicio */
+    header("Location: " . $index_path);
+    exit();
 }
 
 /* se não, carrega as informações normalmente */

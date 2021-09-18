@@ -8,8 +8,14 @@ session_start();
 
 function carrega_itens($condicao, $acao) {
 
-	$id_logado = $_SESSION['morador_logado'][0];; 
-	$params = "WHERE cadastrada_morador_id {$condicao} {$id_logado} AND foi_entregue = 0 AND entregador_pegou = 0 AND excluido = 0 ORDER BY previsao_data_entrega ASC";
+	$id_logado = $_SESSION['morador_logado'][0];;
+
+    if ($acao == 0) {
+        $params = "WHERE cadastrada_morador_id {$condicao} {$id_logado} AND foi_entregue = 0 AND entregador_pegou = 0 AND excluido = 0 ORDER BY previsao_data_entrega ASC";
+    }
+    else {
+        $params = "WHERE cadastrada_morador_id {$condicao} {$id_logado} AND foi_entregue = 0 AND excluido = 0 ORDER BY previsao_data_entrega ASC";
+    }
 	echo carrega_info($params, $acao);	
 }
 

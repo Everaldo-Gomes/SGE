@@ -9,10 +9,7 @@ session_start();
 <link rel="stylesheet" href="<?php echo $bootstrap_css_path ?>">
 <link rel="stylesheet" href="./morador.css">
 
-<div class="editar_morador edited">
-	<p>Morador Editado!</p>
-</div>
-
+<div id="morador_edita_exclui"></div>
 <div class="forms">
 	<form action="editar.php" method="POST" name="Form">	
 		<div class="morador_nome">
@@ -54,6 +51,7 @@ session_start();
 <input id="aux_recebe"   type='text' name='aux_field' readonly value="<?php echo $_SESSION['field_info'][5];?>">
 <input id="aux_password" type='text' name='aux_field' readonly value="<?php echo $_SESSION['field_info'][7];?>">
 <input id="recebedor_id" type='text' name='recebedor_id_field' readonly value="<?php echo $_SESSION['recebedor_id'];?>">
+<input id="morador_status_id" type='text' readonly value="<?php echo $_SESSION['morador_status'];?>">
 
 <script>
  var hidden_recebedor_id = document.getElementById('recebedor_id').value;
@@ -63,6 +61,6 @@ session_start();
  }
 </script>
 
-<?php include("../../../template/bottom.php"); unset($_SESSION['field_info']); unset($_SESSION['recebedor_id']);?>
+<?php include("../../../template/bottom.php"); unset($_SESSION['field_info']); unset($_SESSION['recebedor_id']); unset($_SESSION['morador_status']);?>
 <script src="./morador.js"></script>
 
