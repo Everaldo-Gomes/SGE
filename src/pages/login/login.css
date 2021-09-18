@@ -46,6 +46,7 @@ label a {
 
 label a:hover {
 	color: orange;
+	text-decoration: none;
 }
 
 .forms input[type="submit"] {

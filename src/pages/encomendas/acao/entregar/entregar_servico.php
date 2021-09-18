@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	
     if (isset($_POST['btn_acao_entregar'])) {
 
-		$id_logado = 1; //UREGENTE pegar do login
+		$id_logado = $_SESSION['morador_logado'][0];;
 		
 		/* atualiza a encomenda, dizendo que alguém está responsável por entrega-la */
 		$entregar_obj->alteraRegistroGeral("UPDATE encomenda set entregador_id = {$id_logado} WHERE id = {$_SESSION['encomenda_id']}");

@@ -4,6 +4,8 @@ include_once "../../../database/conexao.php";
 include_once "../../../database/funcoes_gerais.php";
 include_once "../../../routers.php";
 
+session_start();
+
 $database = new Database();
 $db = $database->getConnection();
 
@@ -21,13 +23,13 @@ for ($i = 0; $i < strlen($encomenda_nome); $i++) {
  	}
 }
 
+
+// verifica se o usuário está logado, se não tiver redireciona para a página de login
+
 if (!$apenas_branco) {
 	
 	$encomenda = new funcoes_gerais($db);
-
-	//URGENTE !!!! PRECISA MUDAR. é necessário pegar o morador que vai está logado
-	$morador_logado_id = 2; 
-	//-------------------------------------------------------
+	$morador_logado_id = $_SESSION['morador_logado'][0]; 
 
 	/* editando */
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {	
@@ -38,7 +40,6 @@ if (!$apenas_branco) {
 			$encomenda->edita_encomenda('encomenda', $fields, $dados, "id = {$encomenda_id}"); 
 
 			/* cofirmação */
-			session_start();
 			$_SESSION['encomenda_editada'] = 1;
 			
 			/* redireciona */
