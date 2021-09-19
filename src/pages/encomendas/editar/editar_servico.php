@@ -3,6 +3,8 @@ include("../../../routers.php");
 include_once "../../../database/conexao.php";
 include_once "../../../database/funcoes_gerais.php";
 
+session_start();
+
 $database = new Database();
 $db = $database->getConnection();
 
@@ -16,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$parametros = "WHERE id = {$_POST['btn_editar']}";
 		$arrayResultado = $encomenda->lerRegistros('encomenda', $parametros, '*');
 		
-		session_start();
 		$_SESSION['field_info'] = $arrayResultado;
 		
 		/* redireciona para  a mesma pagina */
@@ -30,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$encomenda->deletarRegistro('encomenda', "id = {$_POST['btn_cancelar']}");
 
 		/* envia confirmação */
-		session_start();
 		$_SESSION['encomenda_cancelada'] = 1;
 		
 		header("Location: " . $editar_encomenda_path);

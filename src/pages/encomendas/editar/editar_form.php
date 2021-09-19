@@ -11,13 +11,14 @@ include_once "../../../database/funcoes_gerais.php";
 <h3 id="titulo">Encomendas pendentes</h3>
 
 <?php
+session_start();
 
 $database = new Database();
 $db = $database->getConnection();
 
 $gerencia_obj = new Funcoes_gerais($db);
 
-$params = 'WHERE foi_entregue = 0 AND excluido = 0';
+$params = "WHERE foi_entregue = 0 AND excluido = 0 AND cadastrada_morador_id = {$_SESSION['morador_logado'][0]}";
 $lista_encomendas = $gerencia_obj->lista_obj('encomenda', $params, '*');
 ?>
 

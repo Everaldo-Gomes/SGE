@@ -33,7 +33,7 @@ class Funcoes_gerais {
 				$data = &$res;
 			}
 		}
-        
+
 		return $data;
 	}
 
@@ -140,6 +140,7 @@ class Funcoes_gerais {
 				array_push($lista, $data);
 			}
 		}
+
 		return $lista;
 	}
 
