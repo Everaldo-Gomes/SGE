@@ -46,7 +46,7 @@ $lista_recebedores = $recebedor->lista_obj('morador', $params, '*');
 			<td>{$lista_recebedores[$qnt_recebedor-1][4]}</td>
             <td>
                 <form action='/SGE/src/pages/moradores/editar/editar.php' method='POST' name='Form'>	
-                    <button type='submit' class='btn btn-info' name='btn_get_id' value='{$lista_recebedores[$qnt_recebedor-1][2]}'>Editar
+                    <button type='submit' class='btn btn-info' name='btn_recebedor_id' value='{$lista_recebedores[$qnt_recebedor-1][2]}'>Editar
                     </button>
                 </form>
             </td>

@@ -16,7 +16,7 @@ $nome     = $_POST['nome_field'];
 $cpf      = $_POST['cpf_field'];
 $telefone = $_POST['telefone_field'];
 $endereco = $_POST['endereco_field'];
-//$recebedor_id = $_POST['btn_get_id']; //btn_get_id
+$recebedor_id = $_POST['btn_recebedor_id']; //botão editar que está na listagem dos recebedores
 $senha = $_POST['password_field'];
 $recebe_encomenda = 0;
 
@@ -63,6 +63,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$morador->deletarRegistro('morador', $where);
         $_SESSION['morador_status'] = 2;
 	}
+    else if (isset($_POST['btn_recebedor_id'])) {
+        
+        $_SESSION['recebedor_id'] = $recebedor_id;
+    }
 
     /* redireciona para a mesma pagina */
     header("Location: " . $editar_morador_path);
