@@ -1,24 +1,5 @@
 'use strict';
 
-function confirm_submit() {
-	confirm("Tem certeza ?");
-}
-
-// mensagem de sucesso ou erro ou cadastrar encomenda
-let encomenda_status = document.getElementById('encomenda_status').value;
-let encomenda_editada = document.getElementById('encomenda_editada').value;
-
-if (encomenda_status == 1) {
-	document.getElementById("encomenda_aviso").innerHTML = "Encomenda excluida";
-	document.getElementById("encomenda_aviso").classList.add("encomenda_excluida_ok");
-}
-
-if (encomenda_editada == 1) {
-	document.getElementById("encomenda_aviso").innerHTML = "Encomenda Editada";
-	document.getElementById("encomenda_aviso").classList.add("encomenda_editada_ok");
-}
-
-
 // define qual tela vai ser mostrada
 var encomenda_pendente = document.querySelector(".encomenda_pendente");
 var encomenda_entregar = document.querySelector(".encomenda_entregar");
@@ -27,6 +8,32 @@ var btn_entregar = document.getElementById("btn_encomenda_entregar");
 
 encomenda_pendente.style.display = "none";
 encomenda_entregar.style.display = "none";
+
+// mensagem de sucesso ou erro ou cadastrar encomenda
+let encomenda_status = document.getElementById('encomenda_status').value;
+let encomenda_editada = document.getElementById('encomenda_editada').value;
+var aba_selecionada = 0;
+
+if (encomenda_status == 1 || encomenda_status == 2) {
+	document.getElementById("encomenda_aviso").innerHTML = "Encomenda excluida";
+	document.getElementById("encomenda_aviso").classList.add("encomenda_excluida_ok");
+
+	if (encomenda_status == 2) {
+		aba_selecionada = 1;
+		btn_entregar.click();
+	}
+	//encomenda_status == 1 ? btn_pendente.click(); : btn_entregar.click();
+}
+
+if (encomenda_editada == 1) {
+	document.getElementById("encomenda_aviso").innerHTML = "Encomenda Editada";
+	document.getElementById("encomenda_aviso").classList.add("encomenda_editada_ok");
+}
+
+// define se o botão entrega pendente vai ser clicado ou não
+if (!aba_selecionada) {
+	btn_pendente.click();
+}
 
 function mostra_esconde_telas(btn) {
 
@@ -47,4 +54,8 @@ function mostra_esconde_telas(btn) {
 		btn_entregar.style.backgroundColor = "gray";
 		btn_pendente.style.backgroundColor = "#17a2b8";
 	}
+}
+
+function confirm_submit() {
+	confirm("Tem certeza ?");
 }

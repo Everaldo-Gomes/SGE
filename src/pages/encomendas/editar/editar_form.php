@@ -28,10 +28,9 @@ $query = "SELECT e.id, e.nome, e.previsao_data_entrega, m.nome, m.endereco
 $lista_entregas = $gerencia_obj->lista_itens($query);
 ?>
 
-
 <div class="btn_acao">
-	<button type='submit' class='btn btn-info' id="btn_encomenda_pendente" name='btn_encomenda_pendente' value='0' onclick="mostra_esconde_telas(this)">Encomendas pendentes</button>
-	<button type='submit' class='btn btn-info' id="btn_encomenda_entregar" name='btn_encomenda_entrega' value='1' onclick="mostra_esconde_telas(this)">Entregas à fazer</button>
+	<button type='submit' class='btn btn-info' id="btn_encomenda_pendente" name='btn_cancelar_encomenda' value='0' onclick="mostra_esconde_telas(this)">Encomendas pendentes</button>
+	<button type='submit' class='btn btn-info' id="btn_encomenda_entregar" name='btn_cancelar_encomenda' value='1' onclick="mostra_esconde_telas(this)">Entregas à fazer</button>
 </div> 
 
 <div class="encomenda_pendente">
@@ -99,7 +98,7 @@ $lista_entregas = $gerencia_obj->lista_itens($query);
 				<td>{$lista_entregas[$qnt_encomenda-1][2]}</td>
 				<td>
                     <form action='{$editar_encomenda_entregar_servico_path}' method='POST' name='Form'>	
-                        <button type='submit' class='btn btn-warning' name='btn_encomenda_entregar' value='{$lista_entregas[$qnt_encomenda-1][0]}'>
+                        <button type='submit' class='btn btn-warning' name='btn_cancelar_entrega' value='{$lista_entregas[$qnt_encomenda-1][0]}'>
                             Cancelar entrega
                         </button>
                     </form>
@@ -109,7 +108,6 @@ $lista_entregas = $gerencia_obj->lista_itens($query);
 				$qnt_encomenda++;
 			}
 			?>
-			
 		</tbody>
 	</table>
 </div>
