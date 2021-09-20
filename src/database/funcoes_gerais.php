@@ -17,7 +17,7 @@ class Funcoes_gerais {
 		return $this->conn->query($query);
     }
 
-	// ler registros e retorna os dados daquele que for encontrado (registros de uma ÚNICA tabela)
+	// ler registros e retorna os dados daquele que for encontrado (registros de uma ÚNICA tabela sem uso de JOIN)
     public function lerRegistros($nomeTabela, $parametros = null, $fields = '*') {
 
         $query = "SELECT {$fields} FROM {$nomeTabela} {$parametros}";
@@ -144,6 +144,22 @@ class Funcoes_gerais {
 		return $lista;
 	}
 
+    // Retorna lista de itens, função bem geral que pode receber joins já que recebe a query por parametro
+    // ela só executa a query passada e retorna o que encontrou
+    public function lista_itens($query) {
+
+		$lista = array();
+		$result = $this->conn->query($query);
+
+		if ($result->rowCount() > 0) {
+			foreach ($result as $data) {
+				array_push($lista, $data);
+			}
+		}
+
+		return $lista;
+	}
+    
 	/* atualiza encomendas */
 	public function edita_encomenda($tabela, array $fields, array $dados, $param = null) {
 

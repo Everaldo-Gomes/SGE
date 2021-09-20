@@ -1,14 +1,36 @@
-#titulo {
+#titulo_pendente, #titulo_entrega {
 	position: relative;
+	float: left;
 	font-family: Arial;
 	font-size: 25px;
 	font-weight: bold;
-	margin: 5% 0px 0px 10%;
+	margin: 5% 0px 70px 10%;
+}
+
+.btn_acao button[type="submit"]  {
+
+	position: relative;
+	float: left;
+	font-family: Arial;
+	font-size: 25px;
+	font-weight: bold;
+	margin: 5% 0px 70px 10%;
+	padding: 0px 150px 0px 150px;
+}
+
+#btn_encomenda_pendente {
+	padding: 0px 130px 0px 130px;
 }
 
 .table {
 	position: relative;
 	margin: 5% auto;
+	width: 80%;	
+}
+
+.encomenda_entregar .table{
+	position: relative;
+	margin: 10% auto;
 	width: 80%;	
 }
 

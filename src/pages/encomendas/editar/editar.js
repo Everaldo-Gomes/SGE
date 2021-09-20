@@ -19,3 +19,32 @@ if (encomenda_editada == 1) {
 }
 
 
+// define qual tela vai ser mostrada
+var encomenda_pendente = document.querySelector(".encomenda_pendente");
+var encomenda_entregar = document.querySelector(".encomenda_entregar");
+var btn_pendente = document.getElementById("btn_encomenda_pendente");
+var btn_entregar = document.getElementById("btn_encomenda_entregar");
+
+encomenda_pendente.style.display = "none";
+encomenda_entregar.style.display = "none";
+
+function mostra_esconde_telas(btn) {
+
+
+	// se foi o botão de entregas à fazer que foi precionado
+	if (btn.value == 1) {
+		encomenda_pendente.style.display = "none";
+		encomenda_entregar.style.display = "block";
+		btn_pendente.style.backgroundColor = "gray";
+		btn_entregar.style.backgroundColor = "#17a2b8";
+	}
+
+	// se o botão clicado foi o de encomendas pendente
+	// nesse caso não pode ser um if-else porque o valor do bnt2 não é avaliado se clicar no btn1, e vice versa
+	if (btn.value == 0){
+		encomenda_entregar.style.display = "none";
+		encomenda_pendente.style.display = "block";
+		btn_entregar.style.backgroundColor = "gray";
+		btn_pendente.style.backgroundColor = "#17a2b8";
+	}
+}
