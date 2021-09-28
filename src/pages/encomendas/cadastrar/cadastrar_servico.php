@@ -17,7 +17,7 @@ $previsao_entrega = $_POST['previsao_entrega_field'];
 /* conferi se foi digitado apenas espaços em branco */
 $apenas_branco = 1;
 for ($i = 0; $i < strlen($encomenda_nome); $i++) {
- 	if ($encomenda_nome[i] != " ") {
+ 	if ($encomenda_nome[$i] != " ") {
  		$apenas_branco = 0;
  		break;
  	}
