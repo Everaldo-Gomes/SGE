@@ -35,34 +35,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // obtendo algumas info
         //morador, entrega, recebedor (igual aa tela de ação entregar e receber juntas)
-        
+        $_SESSION['encomenda_info'] = $entregar_obj->lerRegistros("encomenda", "WHERE id = {$_SESSION['encomenda_id']}");
+        $_SESSION['destinatario_info'] = $entregar_obj->lerRegistros("morador", "WHERE id = {$_SESSION['encomenda_info'][2]}");
+        $_SESSION['entregador_info'] = $entregar_obj->lerRegistros("morador", "WHERE id = {$_SESSION['encomenda_info'][3]}");
         
         // gerando o comprovante (PDF)
          require('../../../../fpdf/fpdf.php');
-         $pdf = new FPDF('P','mm','B3');
-         
+
+         // config a página  array(largura x altura) em milímetro (mm)
+         $pdf = new FPDF('P','mm', array(80,130));
          $pdf->AddPage();
 
-         $pdf->SetFont('Arial','B',30);
-         $pdf->Cell(100,1,'');
-         $pdf->Cell(10,1,'SGE');
-         
-         $pdf->SetFont('Arial','B',15);
-         $pdf->Cell(1,20,'Sistema de Gerenciamento de Encomendas');
-         
-         // $pdf->Cell(1,30,'Compravante de Entrega');
-         
-         // $pdf->SetFont('Arial','B',10);
-         // $pdf->Cell(1,40,'Gerando em ');
+         // config título
+         $pdf->SetFont('Arial','B',17);
+         $pdf->Cell(20,0,'');
+         $pdf->Cell(-20,1,'SGE');
 
-         // $pdf->SetFont('Arial','B',8);
-         // $pdf->Cell(10,20,'Entregador: ');
+         $pdf->SetFont('Arial','B',7);
+         $pdf->Cell(12,10,'Sistema de Gerenciamento de Encomendas');
+         $pdf->Cell(-20,20,'Compravante de Entrega');
+         
+         // config corpo
+         // entregador
+         $pdf->SetFont('Arial','B',9);
+         $pdf->Cell(5,40,'Sobre o entregador');
+         $pdf->SetFont('Arial','',8);
+         $pdf->Cell(10,50,'Nome:');
+         $pdf->Cell(-10,50, $_SESSION['entregador_info'][1]);
+         $pdf->Cell(15,60,'Telefone:');
+         $pdf->Cell(-15,60, $_SESSION['entregador_info'][3]);
+         $pdf->Cell(15,69,'Endereco:');
+         $pdf->Cell(-20,70, $_SESSION['entregador_info'][4]);
+         
+         // recebedor
+         $pdf->SetFont('Arial','B',9);
+         $pdf->Cell(1,90,'Sobre o recebedor');
          // $pdf->Cell(10,20,'Recebedor: ');
          // $pdf->Cell(10,20,'Entrega: ');
-         
+
+         //encomenda
+         // config código da entrega
          // $pdf->Cell(10,30,'Código da entrega');
          // $pdf->Cell(10,30,'gerar o código aqui');
-         $pdf->Output();
+
+         // mostra pdf
+         $pdf->Output(); 
 	}
 
     /* volta para o inicio */
