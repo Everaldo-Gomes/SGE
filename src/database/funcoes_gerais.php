@@ -189,6 +189,18 @@ class Funcoes_gerais {
         return "'".$inputString."'";
     }
 
+    public function buscaHistoricoEntrega($param = null){
+        $param = ($param) ? " WHERE {$param}" : null;
+
+        $query = "SELECT historico_entrega.id AS historico_id, morador.nome AS recebedor_nome, entregador.nome AS entregador_nome, enc.nome AS encomenda_nome FROM historico_entrega 
+            JOIN morador ON morador.id = historico_entrega.morador_recebe_id 
+            JOIN morador AS entregador on entregador.id = historico_entrega.morador_entraga_id
+            JOIN encomenda AS enc ON enc.id = historico_entrega.encomenda_id
+            $param";
+
+        return $this->conn->query($query);
+    }
+
 
 }
 
