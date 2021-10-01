@@ -18,7 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+// FAZER !!!
+// ================================================================================
+// MUDAR A CONSULTA PARA UM JOIN E EXIBIR AS INFO APARTIR DA TABELA historico_entrega
+// 
+
+
 // obtendo algumas info do morador, entrega, recebedor para colocar no comprovante
+
 $encomenda_info = array();
 $destinatario_info = array();
 $entregador_info = array();
@@ -27,17 +34,6 @@ $encomenda_info = $entregar_obj->lerRegistros("encomenda", "WHERE id = {$encomen
 $destinatario_info = $entregar_obj->lerRegistros("morador", "WHERE id = {$encomenda_info[2]}");
 $entregador_info = $entregar_obj->lerRegistros("morador", "WHERE id = {$encomenda_info[3]}");
 
-
-// marca a entrega como entregue 
-$entregar_obj->alteraRegistroGeral("UPDATE encomenda set foi_entregue = 1 WHERE id = {$_SESSION['encomenda_id']}");
-
-// salva histórico de entrega
-//AINDA FAZENDO
-$current_date = date('Y-m-d H:i:s');
-$query = "INSERT INTO historico_entrega (morador_entrega_id, morador_recebe_id, encomenda_id, data_entrega) 
-          VALUES ({$entregador_info[0]}, {$destinatario_info[0]}, {$entregador_info[0]}, '{$current_date }')";
-
-$entregar_obj->inserirRegistroGeral($query);
 
 // Gerando o PDF
 // config a página  array(largura x altura) em milímetro (mm)
@@ -97,7 +93,8 @@ $aux = $entregar_obj->selectRegistroGeral("SELECT MAX(id) FROM encomenda");
 $cod .= $aux[0][0];
 $cod .= "RBR";
          
-$pdf->Cell(10,160, $cod);
+$pdf->Cell(-7,160, $cod);
+$pdf->Cell(10,167, date('Y-m-d H:i:s'));
 
 // mostra pdf
 $pdf->Output();

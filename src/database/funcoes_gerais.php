@@ -100,7 +100,7 @@ class Funcoes_gerais {
 	}
 
     public function inserirRegistroGeral($query) {
-        
+
 		return $this->conn->query($query);
 	}
     

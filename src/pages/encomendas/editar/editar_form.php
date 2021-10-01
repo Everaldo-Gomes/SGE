@@ -166,13 +166,19 @@ $lista_entregas_recebidas = $gerencia_obj->lista_itens($query);
 					    </form>') . "
                 </td>
 			    </tr>
-					  ";
+						";
 				$qnt_encomenda++;
 			}
 			?>
 		</tbody>
 	</table>
 </div>
-<input id="encomenda_status" type='text' readonly value="<?php session_start(); echo $_SESSION['encomenda_cancelada'];?>">
+<input id="encomenda_status" type='hidden' readonly value="<?php session_start(); echo $_SESSION['encomenda_cancelada'];?>">
+<input id="encomenda_entregue" type='hidden' readonly value="<?php session_start(); echo $_SESSION['encomenda_entregue'];?>">
 <script src="./editar.js"></script>
-<?php include("../../../template/bottom.php"); unset($_SESSION['encomenda_cancelada']); unset($_SESSION['encomenda_editada']);?>
+<?php
+include("../../../template/bottom.php");
+unset($_SESSION['encomenda_cancelada']);
+unset($_SESSION['encomenda_editada']);
+unset($_SESSION['encomenda_entregue']);
+?>

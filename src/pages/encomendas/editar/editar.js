@@ -15,6 +15,7 @@ encomenda_recebida.style.display = "none";
 // mensagem de sucesso ou erro ou cadastrar encomenda
 let encomenda_status = document.getElementById('encomenda_status').value;
 let encomenda_editada = document.getElementById('encomenda_editada').value;
+let encomenda_entregue = document.getElementById('encomenda_entregue').value;
 var aba_selecionada = 0;
 
 if (encomenda_status == 1 || encomenda_status == 2) {
@@ -32,6 +33,12 @@ if (encomenda_editada == 1) {
 	document.getElementById("encomenda_aviso").innerHTML = "Encomenda Editada";
 	document.getElementById("encomenda_aviso").classList.add("encomenda_editada_ok");
 }
+
+if (encomenda_entregue == 1) {
+	document.getElementById("encomenda_aviso").innerHTML = "Encomenda Entregue";
+	document.getElementById("encomenda_aviso").classList.add("encomenda_editada_ok");
+}
+
 
 // define se o botão entrega pendente vai ser clicado ou não
 if (!aba_selecionada) {

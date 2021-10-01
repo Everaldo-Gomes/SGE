@@ -46,10 +46,10 @@ CREATE TABLE historico_entrega (
 	id INT NOT NULL AUTO_INCREMENT,	
 	morador_entrega_id INT NOT NULL,
 	morador_recebe_id INT NOT NULL,	
-	encomenda_id INT NOT NULL,
-	data_entraga TIMESTAMP NOT NULL,
+	encomenda_id INT NOT NULL UNIQUE,
+	data_entrega TIMESTAMP NOT NULL,
 	PRIMARY KEY (id),
-	FOREIGN KEY (morador_entraga_id) REFERENCES morador (id),
+	FOREIGN KEY (morador_entrega_id) REFERENCES morador (id),
 	FOREIGN KEY (morador_recebe_id) REFERENCES morador (id),
 	FOREIGN KEY (encomenda_id) REFERENCES encomenda (id)
 );
