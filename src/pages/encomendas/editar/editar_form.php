@@ -132,8 +132,7 @@ $lista_entregas_recebidas = $gerencia_obj->lista_itens($query);
 				<th scope="col">Encomenda</th>
 				<th scope="col">Data Cadastro</th>
 				<th scope="col">Previsão Entrega</th>
-				<th></th>
-				<th></th>
+				<th scope="col">Açeõs</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -146,15 +145,28 @@ $lista_entregas_recebidas = $gerencia_obj->lista_itens($query);
 				<td>{$lista_entregas_recebidas[$qnt_encomenda-1][1]}</td>
 				<td>{$lista_entregas_recebidas[$qnt_encomenda-1][4]}</td>
 				<td>{$lista_entregas_recebidas[$qnt_encomenda-1][5]}</td>
-				<td>
-                    <form action='{$gera_comprovante_entrega_path}' method='POST' name='Form'>	
-                        <button type='submit' class='btn btn-warning' name='btn_gera_comprovante_entrega' value='{$lista_entregas_recebidas[$qnt_encomenda-1][0]}'>
-                            Comprovante de entrega
-                        </button>
-                    </form>
+				<td> " .
+					 
+					 // usando operador ternário
+					 
+					 ($lista_entregas_recebidas[$qnt_encomenda-1][6] == 1 ?
+					  
+					  ' <form action=\'' . $gera_comprovante_entrega_path . '\' method=\'POST\' name=\'Form\' target=\'_blank\'>
+                            <button type=\'submit\' class=\'btn btn-warning\' name=\'btn_gera_comprovante_entrega\' value=\'' . $lista_entregas_recebidas[$qnt_encomenda-1][0] . '\'>
+                               Comprovante de entrega
+                            </button>
+                        </form>'
+						 
+					: //else
+					  
+					  ' <form action=\'' . $confirma_entrega_servico_path . '\' method=\'POST\' name=\'Form\'>
+					        <button type=\'submit\' class=\'btn btn-success\' name=\'btn_confirma_entrega\' value=\'' . $lista_entregas_recebidas[$qnt_encomenda-1][0] . '\'>
+                               Marcar como entregue
+                           </button>
+					    </form>') . "
                 </td>
-			    </tr>	
-				";
+			    </tr>
+					  ";
 				$qnt_encomenda++;
 			}
 			?>

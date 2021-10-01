@@ -44,7 +44,7 @@ CREATE TABLE encomenda (
 CREATE TABLE historico_entrega (
 	
 	id INT NOT NULL AUTO_INCREMENT,	
-	morador_entraga_id INT NOT NULL,
+	morador_entrega_id INT NOT NULL,
 	morador_recebe_id INT NOT NULL,	
 	encomenda_id INT NOT NULL,
 	data_entraga TIMESTAMP NOT NULL,

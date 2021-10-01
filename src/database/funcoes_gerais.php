@@ -99,6 +99,11 @@ class Funcoes_gerais {
 		return $this->conn->query($query);
 	}
 
+    public function inserirRegistroGeral($query) {
+        
+		return $this->conn->query($query);
+	}
+    
 	public function alteraRegistroGeral($query) {
 
 		return $this->conn->query($query);
@@ -117,16 +122,6 @@ class Funcoes_gerais {
 		}
 
 		return $lista;
-        
-        // if ($result->rowCount() > 0) {
-		// 	foreach($result as $id) {
-		// 		return $id;       
-		// 	}
-        // }
-        
-        // else { return -1; }
-        
-    //return $this->conn->query($query);
     }
 
 	// deletar registros. não vai deletar, apenas marcar que não pode ser exibido / procurado

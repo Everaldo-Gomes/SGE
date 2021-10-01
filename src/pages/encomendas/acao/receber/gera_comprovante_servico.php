@@ -18,13 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-//falta fazer o que está comentado
-// gerando a confirmação de entrega (simulando que o morado que espera a enconmenda marcou que a entrega foi entregue)
-
-// marca a entrega como entregue   DESCOMENTAR QUANDO O PDF ESTIVER OK
-//$entregar_obj->alteraRegistroGeral("UPDATE encomenda set foi_entregue = 1 WHERE id = {$_SESSION['encomenda_id']}");
-
-
 // obtendo algumas info do morador, entrega, recebedor para colocar no comprovante
 $encomenda_info = array();
 $destinatario_info = array();
@@ -32,8 +25,21 @@ $entregador_info = array();
 
 $encomenda_info = $entregar_obj->lerRegistros("encomenda", "WHERE id = {$encomenda_id }");
 $destinatario_info = $entregar_obj->lerRegistros("morador", "WHERE id = {$encomenda_info[2]}");
-$entregador_info = $entregar_obj->lerRegistros("morador", "WHERE id = {$destinatario_info[3]}");
+$entregador_info = $entregar_obj->lerRegistros("morador", "WHERE id = {$encomenda_info[3]}");
 
+
+// marca a entrega como entregue 
+$entregar_obj->alteraRegistroGeral("UPDATE encomenda set foi_entregue = 1 WHERE id = {$_SESSION['encomenda_id']}");
+
+// salva histórico de entrega
+//AINDA FAZENDO
+$current_date = date('Y-m-d H:i:s');
+$query = "INSERT INTO historico_entrega (morador_entrega_id, morador_recebe_id, encomenda_id, data_entrega) 
+          VALUES ({$entregador_info[0]}, {$destinatario_info[0]}, {$entregador_info[0]}, '{$current_date }')";
+
+$entregar_obj->inserirRegistroGeral($query);
+
+// Gerando o PDF
 // config a página  array(largura x altura) em milímetro (mm)
 $pdf = new FPDF('P','mm', array(80,200));
 $pdf->AddPage();
