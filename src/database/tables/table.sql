@@ -54,3 +54,19 @@ CREATE TABLE historico_entrega (
 	FOREIGN KEY (morador_recebe_id) 	REFERENCES morador (id),
 	FOREIGN KEY (encomenda_id) 			REFERENCES encomenda (id)
 );
+
+CREATE TABLE entrega_realizada (
+
+	id 					INT		NOT NULL AUTO_INCREMENT,
+	morador_entrega_id 	INT 	NOT NULL,
+	qnt_entregas 		INT 	NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (morador_entrega_id) 	REFERENCES morador (id)
+);
+	
+CREATE TABLE valor_entrega (
+
+	id 						INT				NOT NULL AUTO_INCREMENT,
+	valor_base_por_entrega	DECIMAL(18,2) 	NOT NULL,
+	PRIMARY KEY (id)
+);
