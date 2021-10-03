@@ -23,6 +23,27 @@ $entregador_info = $entregar_obj->lerRegistros("morador", "WHERE id = {$encomend
 // marca a encomenda como entregue
 $entregar_obj->alteraRegistroGeral("UPDATE encomenda set foi_entregue = 1 WHERE id = {$encomenda_id}");
 
+// inseri ou incrementa a quantidade de vezes que esse entregador fez
+
+// consulta se esse entregador já entrou alguma vez
+$query = "SELECT * FROM entrega_realizada WHERE morador_entrega_id = {$entregador_info[0][0]}";
+$entregador_info_2 = $entregar_obj->selectRegistroGeral($query);
+
+//  se os IDs forem iguais, atualiza a quantidade de entrega
+if ($entregador_info_2[0][1] === $entregador_info[0][0]) {
+
+    $nova_qnt_entrega = $entregador_info_2[0][2] + 1;
+    $query = "UPDATE entrega_realizada SET qnt_entregas = {$nova_qnt_entrega} WHERE morador_entrega_id = {$entregador_info[0][0]}";
+    $entregar_obj->alteraRegistroGeral($query);
+}
+
+// se não inseri esse morador com a quantidade igual à 1
+else {
+
+    $query = "INSERT INTO entrega_realizada (morador_entrega_id, qnt_entregas) VALUES ({$entregador_info[0][0]}, 1)";
+    $entregar_obj->inserirRegistroGeral($query);
+}
+
 // salva histórico de entrega
 
 // Gerando o  código da entrega
@@ -43,6 +64,6 @@ session_start();
 
 $_SESSION['encomenda_entregue'] = 1;
 
-//header("Location: " . $editar_encomenda_path);
-//exit();
+header("Location: " . $editar_encomenda_path);
+exit();
 ?>
