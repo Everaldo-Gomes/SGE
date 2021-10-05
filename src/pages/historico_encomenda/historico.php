@@ -1,19 +1,23 @@
 <?php
-$title = 'SGC - Histórico';
-include("../../routers.php");
-include("../../template/top.php");
-include_once "../../database/conexao.php";
-include_once "../../database/funcoes_gerais.php";
+	
+	session_start();
+
+	$title = 'SGC - Histórico';
+	include("../../routers.php");
+	include("../../template/top.php");
+	include_once "../../classes/HistoricoEntregaDAO.php";
+	include_once "../../database/conexao.php";
+
+	$database = new Database();
+	$historicoEntregaDAO = new HistoricoEntregaDAO($database->getConnection());
+
+	$morador_logado_id = $_SESSION['morador_logado'][0];
+	$lista_entregas = $historicoEntregaDAO -> listaHistoricoEntregas("morador.id = $morador_logado_id OR entregador.id = $morador_logado_id");
+	echo "<pre>";
+	print_r($lista_entregas);
+	echo "</pre>";
 ?>
 <head><link rel="stylesheet" href="./historico.css"></head>
-
-<?php
-
-$database = new Database();
-$db = $database->getConnection();
-
-$historico = new Funcoes_gerais($db);
-?>
 
 
 <table class="table">
@@ -28,10 +32,12 @@ $historico = new Funcoes_gerais($db);
 	</thead>
 	<tbody>
 		<?php
-		$qnt_recebedor = 1;
-		foreach ($lista_recebedores as $recebedor) {	
-			echo "
-			";			
+		foreach ($lista_entregas as $key => $value) {
+			echo "<tr>";
+			foreach($value as $key => $teste){
+				echo "<td>{$teste}</td>";
+			}
+			echo "</tr>";
 		}
 		?>
 	</tbody>
