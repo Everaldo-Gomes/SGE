@@ -13,9 +13,6 @@
 
 	$morador_logado_id = $_SESSION['morador_logado'][0];
 	$lista_entregas = $historicoEntregaDAO -> listaHistoricoEntregas("morador.id = $morador_logado_id OR entregador.id = $morador_logado_id");
-	echo "<pre>";
-	print_r($lista_entregas);
-	echo "</pre>";
 ?>
 <head><link rel="stylesheet" href="./historico.css"></head>
 
