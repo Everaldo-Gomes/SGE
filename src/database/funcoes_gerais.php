@@ -99,11 +99,31 @@ class Funcoes_gerais {
 		return $this->conn->query($query);
 	}
 
+    public function inserirRegistroGeral($query) {
+
+		return $this->conn->query($query);
+	}
+    
 	public function alteraRegistroGeral($query) {
 
 		return $this->conn->query($query);
 	}
-	
+    
+	public function selectRegistroGeral($query) {
+
+        $lista = array();
+        $result = $this->conn->query($query);
+
+        if ($result->rowCount() > 0) {
+
+			foreach ($result as $data) {
+			 	array_push($lista, $data);
+            }
+		}
+
+		return $lista;
+    }
+
 	// deletar registros. não vai deletar, apenas marcar que não pode ser exibido / procurado
 	public function deletarRegistro($nomeTabela, $where = null) {
 		
@@ -111,21 +131,7 @@ class Funcoes_gerais {
 		$query = "UPDATE {$nomeTabela} SET excluido = 1 {$where}";
 		return $this->conn->query($query);
 	}
-	
-	/* retorna o último id */
-	public function ultimo_id($tabela, $parametros) {
-		
-		$sql = "SELECT MAX(id) FROM {$tabela} encomenda WHERE {$parametros}";
-		$result = $this->conn->query($sql);
-
-		if ($result->rowCount() > 0) {
-			foreach($result as $id) {
-				return $id;
-				
-			}
-		}
-		else { return -1; }
-	}
+    
 
 	/* retorna lista de itens */
 	public function lista_obj($tabela, $params = null, $fields) {

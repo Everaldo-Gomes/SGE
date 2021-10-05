@@ -31,4 +31,4 @@ if (!isset($_SESSION['morador_logado'])) {
 
 <input id="encomenda_status_id" type='text' readonly value="<?php echo $_SESSION['op_status'];?>">
 <script src="./public/js/index.js"></script>
-<?php include("./template/bottom.php"); unset($_SESSION['op_status']);?>
+<?php include("./template/bottom.php"); unset($_SESSION['op_status']); ?>

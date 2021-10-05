@@ -28,6 +28,8 @@ $index_servico_path = "/SGE/src/index_servico.php";
 $editar_encomenda_servico_path = "/SGE/src/pages/encomendas/editar/editar_servico.php";
 $editar_encomenda_entregar_servico_path = "/SGE/src/pages/encomendas/editar/editar_entrega_servico.php";
 $receber_encomenda_servico_path = "/SGE/src/pages/encomendas/acao/receber/receber_servico.php";
+$gera_comprovante_entrega_path = "/SGE/src/pages/encomendas/acao/receber/gera_comprovante_servico.php";
+$confirma_entrega_servico_path = "/SGE/src/pages/encomendas/acao/receber/confirma_entrega_servico.php";
 $entregar_encomenda_servico_path = "/SGE/src/pages/encomendas/acao/entregar/entregar_servico.php";
 $logout_servico_path = "/SGE/src/pages/login/logout_servico.php";
 

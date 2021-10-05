@@ -7,6 +7,10 @@
 	margin: 5% 0px 70px 10%;
 }
 
+.btn_acao {
+	margin: 10% 0px 0px 7%;
+}
+
 .btn_acao button[type="submit"]  {
 
 	position: relative;
@@ -14,12 +18,15 @@
 	font-family: Arial;
 	font-size: 25px;
 	font-weight: bold;
-	margin: 5% 0px 70px 10%;
-	padding: 0px 150px 0px 150px;
+	text-align: center;
+	margin: 1% 20px 70px 5%;
+	padding: 10px 100px 10px 100px;
 }
 
 #btn_encomenda_pendente {
-	padding: 0px 130px 0px 130px;
+
+	padding: 10px 100px 10px 60px;
+	text-align: center;
 }
 
 .table {
