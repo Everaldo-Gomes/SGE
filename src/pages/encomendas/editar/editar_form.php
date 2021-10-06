@@ -56,7 +56,6 @@ $lista_entregas_recebidas = $gerencia_obj->lista_itens($query);
 				<th scope="col">Data de cadastro</th>
 				<th scope="col">Previsão Entrega</th>
 				<th></th>
-				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -76,7 +75,7 @@ $lista_entregas_recebidas = $gerencia_obj->lista_itens($query);
                     <button type='submit' onclick='confirm_submit()' class='btn btn-danger' name='btn_cancelar' value='{$lista_encomendas[$qnt_encomenda-1][0]}'>Cancelar</button>
                 </form>
             </td> 
-			<td><a href='/SGE/src/pages/encomendas/acao/entregar/entregar_form.php?id={$lista_encomendas[$qnt_encomenda-1][0]}' class='btn btn-primary' role='button'>Entregar</span></a></td>
+			
 			</tr>
 				";
 				$qnt_encomenda++;
