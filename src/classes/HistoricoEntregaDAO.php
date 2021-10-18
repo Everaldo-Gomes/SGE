@@ -13,18 +13,18 @@ class HistoricoEntregaDAO{
     public function listaHistoricoEntregas($where){
         try {
             $param = ($where != null) ? " WHERE {$where} AND enc.foi_entregue = 1 " : null;
-            $query = $this->conn->prepare("SELECT historico_entrega.id AS historico_id, 
-                morador.nome AS recebedor_nome, 
-                entregador.nome AS entregador_nome, 
-                historico_entrega.data_entraga AS data_entraga,
-                enc.nome AS encomenda_nome 
-                FROM historico_entrega 
-                JOIN morador ON morador.id = historico_entrega.morador_recebe_id 
-                JOIN morador AS entregador ON entregador.id = historico_entrega.morador_entraga_id
-                JOIN encomenda AS enc ON enc.id = historico_entrega.encomenda_id 
+            $query = $this->conn->prepare("SELECT 
+                hist_entrega.id             AS historico_id, 
+                recebedor.nome              AS recebedor_nome, 
+                entregador.nome             AS entregador_nome, 
+                hist_entrega.data_entrega   AS data_entrega,
+                enc.nome                    AS encomenda_nome 
+                FROM historico_entrega hist_entrega
+                JOIN morador recebedor              ON recebedor.id = hist_entrega.morador_recebe_id 
+                JOIN morador entregador             ON entregador.id = hist_entrega.morador_entrega_id
+                JOIN encomenda enc                  ON enc.id = hist_entrega.encomenda_id 
                 $param 
-                ORDER BY morador.nome");
-    
+                ORDER BY recebedor.nome");
             $query->execute();
             $array = $query->fetchAll(PDO::FETCH_ASSOC);
             return $array;

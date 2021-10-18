@@ -12,7 +12,11 @@
 	$historicoEntregaDAO = new HistoricoEntregaDAO($database->getConnection());
 
 	$morador_logado_id = $_SESSION['morador_logado'][0];
-	$lista_entregas = $historicoEntregaDAO -> listaHistoricoEntregas("morador.id = $morador_logado_id OR entregador.id = $morador_logado_id");
+
+
+
+
+	$lista_entregas = $historicoEntregaDAO -> listaHistoricoEntregas("recebedor.id = $morador_logado_id OR entregador.id = $morador_logado_id");
 ?>
 <head><link rel="stylesheet" href="./historico.css"></head>
 
