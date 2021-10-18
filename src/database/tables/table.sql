@@ -71,6 +71,21 @@ CREATE TABLE valor_entrega (
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE area_do_site(
+	
+	id 					INT				NOT NULL AUTO_INCREMENT,
+	nome_pagina			VARCHAR(255)	NOT NULL,
+	ativa				INT				NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE autorizacao_usuario(
+	morador_id			INT		NOT NULL,
+	area_do_site_id		INT		NOT NULL,
+	FOREIGN KEY (morador_id) 		REFERENCES morador (id),
+	FOREIGN KEY (area_do_site_id) 	REFERENCES area_do_site (id)
+);
+
 
 INSERT INTO morador (id, nome, cpf, telefone, endereco, recebe, excluido, senha) VALUES (1, '1 recebedor', 1, 1, 1, 1, 0, 1);
 INSERT INTO morador (id, nome, cpf, telefone, endereco, recebe, excluido, senha) VALUES (2, '2 recebedor', 2, 2, 2, 1, 0, 2);
@@ -95,4 +110,3 @@ INSERT INTO encomenda (id, nome, cadastrada_morador_id, entregador_id, data_cada
 
 
 INSERT INTO valor_entrega (id, valor_base_por_entrega) VALUES (1, 1.00);
-

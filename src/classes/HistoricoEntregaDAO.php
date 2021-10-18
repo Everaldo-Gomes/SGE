@@ -33,5 +33,17 @@ class HistoricoEntregaDAO{
         }
     }
 
+    public function addHistoricoEntrega($entregadorInfo, $cod_entrega, $destinatarioId, $encomendaId, $dataEntrega) {
+        try {
+            $query = "INSERT INTO historico_entrega (morador_entrega_id, morador_recebe_id, encomenda_id, data_entrega, cod_entrega) 
+                VALUES ({$entregadorInfo}, {$destinatarioId}, {$encomendaId}, '{$dataEntrega}', '{$cod_entrega}')";
+    
+            return $this->conn->query($query);
+        } catch (\PDOException $e) {
+            echo "ERRO: ".$e->getMessage();
+        }
+
+	}
+
 }
 ?>
