@@ -27,7 +27,7 @@ $lista_encomendas = $gerencia_obj->lista_obj('encomenda', $params, '*');
 $query = "SELECT e.id, e.nome, e.previsao_data_entrega, m.nome, m.endereco 
           FROM encomenda e JOIN morador m ON  e.cadastrada_morador_id = m.id 
           WHERE e.cadastrada_morador_id != {$_SESSION['morador_logado'][0]} AND e.entregador_id = {$_SESSION['morador_logado'][0]}
-          AND e.entregador_pegou = 1";
+          AND e.entregador_pegou = 1 AND e.foi_entregue = 0";
 
 $lista_entregas = $gerencia_obj->lista_itens($query);
 
