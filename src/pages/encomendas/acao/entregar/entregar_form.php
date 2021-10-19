@@ -39,8 +39,8 @@ session_start();
 	</div>
 	<div class="btns">
 		<form action="entregar_servico.php" method="POST">
-			<button type='submit' class='encomenda btn btn-success' name='btn_acao_entregar' value='0'>Entregar</button>
-			<button type='submit' class='encomenda btn btn-danger' name='btn_acao_cancelar' value='1'>Cancelar</button>
+			<button type='submit' class='encomenda entregar btn btn-success' name='btn_acao_entregar' value='0'>Quero ser responsável por essa entregar</button>
+			<button type='submit' class='encomenda btn btn-danger' name='btn_acao_cancelar' value='1'>Voltar</button>
 		</form>
 	</div>
 </div>

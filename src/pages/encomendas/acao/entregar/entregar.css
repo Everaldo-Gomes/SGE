@@ -45,11 +45,16 @@
 
 .btns button[type=submit] {
 	position: relative;
-	padding: 40px 150px 40px 150px;
+	padding: 30px 150px 30px 150px;
 	margin-top: 50px;
 	cursor: pointer;
 	font-family: Arial;
 	font-size: 30px;
 	text-align: right;
 	border-radius: 15px;
+}
+
+
+.btns .entregar {
+	margin: 0px 0px 0px -200px;
 }
