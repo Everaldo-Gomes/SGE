@@ -24,8 +24,7 @@ include("../../../template/top.php");
 					   onkeypress="return /[0-9]/i.test(event.key)">
 		</div>
 		<div class="morador_endereco">
-			<input type="text" name="endereco_field" size="55" maxlength="30" placeholder="Endereço"
-				   onkeypress="return /[a-z' ']/i.test(event.key)">
+			<input type="text" name="endereco_field" size="55" maxlength="30" placeholder="Endereço">
 		</div>
            <div class="morador_password">
 			<input id="nome_id" type="password" name="password_field" size="55" maxlength="8" placeholder="Senha" required
